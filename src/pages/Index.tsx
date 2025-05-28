@@ -8,6 +8,8 @@ import RecentlyViewedProducts from "@/components/RecentlyViewedProducts";
 import TrustSection from "@/components/TrustSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import MobileNavigation from "@/components/MobileNavigation";
+import SellersSection from "@/components/SellersSection";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 
 const Index = () => {
   return (
@@ -19,6 +21,8 @@ const Index = () => {
         <CategoryGrid />
         <EditorsPicksSection />
         <TrendingProducts />
+        <SellersSection />
+        <WhyChooseUsSection />
         <RecentlyViewedProducts />
         <TrustSection />
         <NewsletterSection />
