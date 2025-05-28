@@ -30,7 +30,7 @@ const Profile = () => {
   const legalMenuItems = [
     { title: "About LUXE", icon: Info, hasArrow: true },
     { title: "Terms of Service", icon: FileText, hasArrow: true },
-    { title: "Privacy Policy", icon: Shield, hasArrow: true },
+    { title: "Privacy Policy", icon: Shield, hasArrow: true, onClick: () => window.location.href = '/privacy' },
     { title: "Do Not Sell My Info", icon: Settings, hasArrow: true },
   ];
 
@@ -44,6 +44,7 @@ const Profile = () => {
           <button
             key={itemIndex}
             className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-b-0"
+            onClick={item.onClick}
           >
             <span className="font-inter text-gray-900 font-medium text-base">
               {item.title}
