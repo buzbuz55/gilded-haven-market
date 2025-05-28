@@ -21,22 +21,34 @@ const MobileNavigation = () => {
           <span className="text-xs text-gray-600">Home</span>
         </button>
         
-        <button className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors">
+        <button 
+          onClick={() => navigate("/categories")}
+          className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors"
+        >
           <Search className="w-6 h-6 text-gray-600" />
-          <span className="text-xs text-gray-600">Search</span>
+          <span className="text-xs text-gray-600">Browse</span>
         </button>
         
-        <button className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors">
+        <button 
+          onClick={() => navigate("/profile")}
+          className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors"
+        >
           <Heart className="w-6 h-6 text-gray-600" />
           <span className="text-xs text-gray-600">Saved</span>
         </button>
         
-        <button className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors">
+        <button 
+          onClick={() => navigate("/messages")}
+          className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors"
+        >
           <Mail className="w-6 h-6 text-gray-600" />
           <span className="text-xs text-gray-600">Inbox</span>
         </button>
         
-        <button className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors">
+        <button 
+          onClick={() => navigate("/login")}
+          className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors"
+        >
           <User className="w-6 h-6 text-gray-600" />
           <span className="text-xs text-gray-600">Profile</span>
         </button>

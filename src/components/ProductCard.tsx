@@ -1,5 +1,7 @@
 
 import { Heart } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   id: string;
@@ -14,6 +16,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ 
+  id,
   title, 
   price, 
   originalPrice, 
@@ -23,26 +26,41 @@ const ProductCard = ({
   isNew, 
   isSale 
 }: ProductCardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/${id}`);
+  };
+
   return (
-    <div className="group cursor-pointer bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
+    <div 
+      className="group cursor-pointer bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
+      onClick={handleClick}
+    >
       <div className="relative">
         <img 
           src={image} 
           alt={title}
           className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <button className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors">
+        <button 
+          className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors z-10"
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("Added to favorites");
+          }}
+        >
           <Heart className="w-5 h-5 text-gray-600 hover:text-red-500 transition-colors" />
         </button>
         {isNew && (
-          <div className="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+          <Badge className="absolute top-4 left-4 bg-green-500 hover:bg-green-600">
             NEW
-          </div>
+          </Badge>
         )}
         {isSale && (
-          <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+          <Badge className="absolute top-4 left-4 bg-red-500 hover:bg-red-600">
             SALE
-          </div>
+          </Badge>
         )}
       </div>
       
