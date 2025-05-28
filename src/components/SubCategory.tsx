@@ -35,7 +35,7 @@ const SubCategory = ({ categoryName, subcategories, onBack, onSubCategoryClick }
             >
               <ArrowLeft className="w-5 h-5 text-gray-700" />
             </button>
-            <h1 className="font-inter text-lg font-medium text-gray-900 tracking-wide uppercase">
+            <h1 className="font-playfair text-lg font-medium text-gray-900 tracking-wide uppercase">
               {categoryName}
             </h1>
             <div className="w-9"></div> {/* Spacer for center alignment */}

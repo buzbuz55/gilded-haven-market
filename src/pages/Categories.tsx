@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, ChevronRight } from "lucide-react";
@@ -6,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import Header from "@/components/Header";
 import MobileNavigation from "@/components/MobileNavigation";
 import SubCategory from "@/components/SubCategory";
+import ProductListing from "@/components/ProductListing";
 
 const categories = [
   { 
@@ -98,6 +98,84 @@ const subcategoriesData = {
   ]
 };
 
+// Sample product data for paintings
+const paintingsProducts = [
+  {
+    id: "1",
+    title: "Basilica di Santa Ma...",
+    artist: "Allegre Raymond",
+    price: 4780,
+    image: "/placeholder.svg"
+  },
+  {
+    id: "2",
+    title: "Owl Tawny & Egg Bla...",
+    artist: "Dani Humberstone",
+    price: 442,
+    image: "/placeholder.svg"
+  },
+  {
+    id: "3",
+    title: "Still Life and Hunting...",
+    artist: "P. M. Guillemain",
+    price: 18500,
+    image: "/placeholder.svg"
+  },
+  {
+    id: "4",
+    title: "Airplane in landscap...",
+    artist: "Jeroen Allart",
+    price: 6000,
+    image: "/placeholder.svg"
+  },
+  {
+    id: "5",
+    title: "Circle of Duncan Gra...",
+    artist: "Duncan Grant",
+    price: 858,
+    originalPrice: 1073,
+    image: "/placeholder.svg",
+    isOnSale: true
+  },
+  {
+    id: "6",
+    title: "Tombs of the Sultans...",
+    artist: "Frank Dillon",
+    price: 41452,
+    image: "/placeholder.svg"
+  },
+  {
+    id: "7",
+    title: "Awakening - Importa...",
+    artist: "Herbert James Draper",
+    price: 102420,
+    image: "/placeholder.svg"
+  },
+  {
+    id: "8",
+    title: "News from the Front -...",
+    artist: "Frederick Goodall R.A.",
+    price: 26227,
+    image: "/placeholder.svg"
+  },
+  {
+    id: "9",
+    title: "Highland Stag",
+    artist: "Charles Landseer RA",
+    price: 2214,
+    image: "/placeholder.svg"
+  },
+  {
+    id: "10",
+    title: "Green Landscape",
+    artist: "DeJun Chen",
+    price: 780,
+    originalPrice: 1200,
+    image: "/placeholder.svg",
+    isOnSale: true
+  }
+];
+
 // Sample recently viewed products
 const recentlyViewedProducts = [
   {
@@ -120,6 +198,7 @@ const recentlyViewedProducts = [
 const Categories = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleCategoryClick = (categoryName: string) => {
@@ -129,17 +208,37 @@ const Categories = () => {
 
   const handleSubCategoryClick = (subcategoryName: string) => {
     console.log(`Navigating to ${subcategoryName} subcategory`);
-    // Navigate to specific subcategory or filter logic here
+    setSelectedSubcategory(subcategoryName);
   };
 
   const handleBackToCategories = () => {
     setSelectedCategory(null);
+    setSelectedSubcategory(null);
+  };
+
+  const handleBackToSubcategories = () => {
+    setSelectedSubcategory(null);
   };
 
   const filteredCategories = categories.filter(category =>
     category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     category.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // If a subcategory is selected, show product listing
+  if (selectedSubcategory && selectedCategory) {
+    return (
+      <>
+        <ProductListing
+          categoryName={selectedCategory}
+          subcategoryName={selectedSubcategory}
+          products={paintingsProducts}
+          onBack={handleBackToSubcategories}
+        />
+        <MobileNavigation />
+      </>
+    );
+  }
 
   // If a category is selected, show subcategories
   if (selectedCategory && subcategoriesData[selectedCategory as keyof typeof subcategoriesData]) {
@@ -186,7 +285,7 @@ const Categories = () => {
                   <span className="text-2xl">{category.icon}</span>
                 </div>
                 <div className="text-left">
-                  <h3 className="font-inter text-lg font-medium text-gray-900 tracking-wide">
+                  <h3 className="font-playfair text-lg font-medium text-gray-900 tracking-wide">
                     {category.name}
                   </h3>
                   <p className="font-inter text-sm text-gray-500">
