@@ -5,6 +5,7 @@ import { Search, ChevronRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Header from "@/components/Header";
 import MobileNavigation from "@/components/MobileNavigation";
+import SubCategory from "@/components/SubCategory";
 
 const categories = [
   { 
@@ -44,6 +45,59 @@ const categories = [
   }
 ];
 
+// Subcategories data
+const subcategoriesData = {
+  "FURNITURE": [
+    { name: "Seating", image: "/placeholder.svg" },
+    { name: "Lighting", image: "/placeholder.svg" },
+    { name: "Tables", image: "/placeholder.svg" },
+    { name: "Decorative Objects", image: "/placeholder.svg" },
+    { name: "Case Pieces and Storage", image: "/placeholder.svg" },
+    { name: "Mirrors", image: "/placeholder.svg" },
+    { name: "Rugs and Carpets", image: "/placeholder.svg" },
+    { name: "Folk Art", image: "/placeholder.svg" },
+    { name: "Serveware, Ceramics, Silver and Glass", image: "/placeholder.svg" },
+    { name: "Wall Decorations", image: "/placeholder.svg" },
+    { name: "Building and Garden Elements", image: "/placeholder.svg" },
+    { name: "Asian Art and Furniture", image: "/placeholder.svg" }
+  ],
+  "ART": [
+    { name: "Paintings", image: "/placeholder.svg" },
+    { name: "Sculptures", image: "/placeholder.svg" },
+    { name: "Photography", image: "/placeholder.svg" },
+    { name: "Prints and Multiples", image: "/placeholder.svg" },
+    { name: "Drawings and Watercolor Paintings", image: "/placeholder.svg" },
+    { name: "Mixed Media", image: "/placeholder.svg" },
+    { name: "Art on Sale", image: "/placeholder.svg" }
+  ],
+  "JEWELRY & WATCHES": [
+    { name: "Watches", image: "/placeholder.svg" },
+    { name: "Rings", image: "/placeholder.svg" },
+    { name: "Earrings", image: "/placeholder.svg" },
+    { name: "Necklaces", image: "/placeholder.svg" },
+    { name: "Bracelets", image: "/placeholder.svg" },
+    { name: "Cufflinks", image: "/placeholder.svg" },
+    { name: "Brooches", image: "/placeholder.svg" },
+    { name: "Objects d'Art and Vertu", image: "/placeholder.svg" },
+    { name: "Silver, Flatware and Silverplate", image: "/placeholder.svg" },
+    { name: "Fashion Jewelry", image: "/placeholder.svg" },
+    { name: "Jewelry & Watches on Sale", image: "/placeholder.svg" }
+  ],
+  "FASHION": [
+    { name: "Clothing", image: "/placeholder.svg" },
+    { name: "Handbags", image: "/placeholder.svg" },
+    { name: "Accessories", image: "/placeholder.svg" },
+    { name: "Ephemera", image: "/placeholder.svg" },
+    { name: "Fashion on Sale", image: "/placeholder.svg" }
+  ],
+  "CREATORS": [
+    { name: "Furniture Creators", image: "/placeholder.svg" },
+    { name: "Artists", image: "/placeholder.svg" },
+    { name: "Jewelry & Watches Creators", image: "/placeholder.svg" },
+    { name: "Designers", image: "/placeholder.svg" }
+  ]
+};
+
 // Sample recently viewed products
 const recentlyViewedProducts = [
   {
@@ -65,17 +119,42 @@ const recentlyViewedProducts = [
 
 const Categories = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleCategoryClick = (categoryName: string) => {
     console.log(`Navigating to ${categoryName} category`);
-    // Navigate to specific category or filter logic here
+    setSelectedCategory(categoryName);
+  };
+
+  const handleSubCategoryClick = (subcategoryName: string) => {
+    console.log(`Navigating to ${subcategoryName} subcategory`);
+    // Navigate to specific subcategory or filter logic here
+  };
+
+  const handleBackToCategories = () => {
+    setSelectedCategory(null);
   };
 
   const filteredCategories = categories.filter(category =>
     category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     category.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // If a category is selected, show subcategories
+  if (selectedCategory && subcategoriesData[selectedCategory as keyof typeof subcategoriesData]) {
+    return (
+      <>
+        <SubCategory
+          categoryName={selectedCategory}
+          subcategories={subcategoriesData[selectedCategory as keyof typeof subcategoriesData]}
+          onBack={handleBackToCategories}
+          onSubCategoryClick={handleSubCategoryClick}
+        />
+        <MobileNavigation />
+      </>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
