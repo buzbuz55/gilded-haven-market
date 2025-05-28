@@ -15,7 +15,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 
-              className="text-2xl font-bold text-gray-900 tracking-tight cursor-pointer"
+              className="font-playfair text-2xl font-semibold text-gray-900 tracking-tight cursor-pointer"
               onClick={() => navigate("/")}
             >
               LUXE
@@ -26,31 +26,31 @@ const Header = () => {
           <nav className="hidden md:flex space-x-8">
             <button 
               onClick={() => navigate("/categories")}
-              className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+              className="font-inter text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               Art
             </button>
             <button 
               onClick={() => navigate("/categories")}
-              className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+              className="font-inter text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               Jewelry & Watches
             </button>
             <button 
               onClick={() => navigate("/categories")}
-              className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+              className="font-inter text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               Furniture
             </button>
             <button 
               onClick={() => navigate("/categories")}
-              className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+              className="font-inter text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               Fashion
             </button>
             <button 
               onClick={() => navigate("/categories")}
-              className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+              className="font-inter text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               Collections
             </button>
@@ -108,7 +108,7 @@ const Header = () => {
                   navigate("/categories");
                   setIsMenuOpen(false);
                 }}
-                className="text-gray-700 hover:text-gray-900 font-medium text-left"
+                className="font-inter text-gray-700 hover:text-gray-900 font-medium text-left"
               >
                 Art
               </button>
@@ -117,7 +117,7 @@ const Header = () => {
                   navigate("/categories");
                   setIsMenuOpen(false);
                 }}
-                className="text-gray-700 hover:text-gray-900 font-medium text-left"
+                className="font-inter text-gray-700 hover:text-gray-900 font-medium text-left"
               >
                 Jewelry & Watches
               </button>
@@ -126,7 +126,7 @@ const Header = () => {
                   navigate("/categories");
                   setIsMenuOpen(false);
                 }}
-                className="text-gray-700 hover:text-gray-900 font-medium text-left"
+                className="font-inter text-gray-700 hover:text-gray-900 font-medium text-left"
               >
                 Furniture
               </button>
@@ -135,7 +135,7 @@ const Header = () => {
                   navigate("/categories");
                   setIsMenuOpen(false);
                 }}
-                className="text-gray-700 hover:text-gray-900 font-medium text-left"
+                className="font-inter text-gray-700 hover:text-gray-900 font-medium text-left"
               >
                 Fashion
               </button>
@@ -144,7 +144,7 @@ const Header = () => {
                   navigate("/categories");
                   setIsMenuOpen(false);
                 }}
-                className="text-gray-700 hover:text-gray-900 font-medium text-left"
+                className="font-inter text-gray-700 hover:text-gray-900 font-medium text-left"
               >
                 Collections
               </button>

@@ -11,14 +11,14 @@ const MobileNavigation = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 md:hidden z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 md:hidden z-50 font-inter">
       <div className="grid grid-cols-5 h-16">
         <button 
           onClick={handleHomeClick}
           className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors"
         >
           <Home className="w-6 h-6 text-gray-900" />
-          <span className="text-xs text-gray-600">Home</span>
+          <span className="text-xs text-gray-600 font-medium">Home</span>
         </button>
         
         <button 
@@ -26,7 +26,7 @@ const MobileNavigation = () => {
           className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors"
         >
           <Search className="w-6 h-6 text-gray-600" />
-          <span className="text-xs text-gray-600">Browse</span>
+          <span className="text-xs text-gray-600 font-medium">Browse</span>
         </button>
         
         <button 
@@ -34,7 +34,7 @@ const MobileNavigation = () => {
           className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors"
         >
           <Heart className="w-6 h-6 text-gray-600" />
-          <span className="text-xs text-gray-600">Saved</span>
+          <span className="text-xs text-gray-600 font-medium">Saved</span>
         </button>
         
         <button 
@@ -42,7 +42,7 @@ const MobileNavigation = () => {
           className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors"
         >
           <Mail className="w-6 h-6 text-gray-600" />
-          <span className="text-xs text-gray-600">Inbox</span>
+          <span className="text-xs text-gray-600 font-medium">Inbox</span>
         </button>
         
         <button 
@@ -50,7 +50,7 @@ const MobileNavigation = () => {
           className="flex flex-col items-center justify-center space-y-1 hover:bg-gray-50 transition-colors"
         >
           <User className="w-6 h-6 text-gray-600" />
-          <span className="text-xs text-gray-600">Profile</span>
+          <span className="text-xs text-gray-600 font-medium">Profile</span>
         </button>
       </div>
     </div>
