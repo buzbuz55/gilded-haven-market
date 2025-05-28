@@ -1,122 +1,149 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Search, ChevronRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import Header from "@/components/Header";
-import ProductCard from "@/components/ProductCard";
 import MobileNavigation from "@/components/MobileNavigation";
 
 const categories = [
-  { name: "Art", count: 1250, icon: "🎨" },
-  { name: "Jewelry & Watches", count: 890, icon: "💎" },
-  { name: "Furniture", count: 567, icon: "🪑" },
-  { name: "Fashion", count: 432, icon: "👗" },
-  { name: "Collectibles", count: 234, icon: "🏺" },
-  { name: "Antiques", count: 123, icon: "🕰️" }
+  { 
+    name: "FURNITURE", 
+    icon: "🪑",
+    description: "Curated designer pieces"
+  },
+  { 
+    name: "ART", 
+    icon: "🎨",
+    description: "Fine art & collectibles"
+  },
+  { 
+    name: "JEWELRY & WATCHES", 
+    icon: "💎",
+    description: "Luxury timepieces & jewelry"
+  },
+  { 
+    name: "FASHION", 
+    icon: "👗",
+    description: "Designer accessories"
+  },
+  { 
+    name: "SALE", 
+    icon: "🏷️",
+    description: "Exceptional offers"
+  },
+  { 
+    name: "CREATORS", 
+    icon: "🎭",
+    description: "Artist collaborations"
+  },
+  { 
+    name: "ICONIC DESIGNS", 
+    icon: "⭐",
+    description: "Timeless classics"
+  }
 ];
 
-const sampleProducts = [
+// Sample recently viewed products
+const recentlyViewedProducts = [
   {
     id: "1",
-    title: "Contemporary Abstract Canvas",
-    price: "$2,850",
     image: "/placeholder.svg",
-    brand: "Gallery Modern",
-    category: "art",
-    isNew: true
+    title: "Vintage Gold Watch"
   },
   {
-    id: "2",
-    title: "Diamond Tennis Bracelet",
-    price: "$15,400",
+    id: "2", 
     image: "/placeholder.svg",
-    brand: "Luxury Jewels",
-    category: "jewelry"
+    title: "Designer Bracelet"
   },
   {
     id: "3",
-    title: "Vintage Leather Armchair",
-    price: "$4,200",
-    originalPrice: "$5,800",
-    image: "/placeholder.svg",
-    brand: "Classic Furniture",
-    category: "furniture",
-    isSale: true
+    image: "/placeholder.svg", 
+    title: "Classic Timepiece"
   }
 ];
 
 const Categories = () => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
-  const filteredProducts = selectedCategory === "all" 
-    ? sampleProducts 
-    : sampleProducts.filter(product => product.category === selectedCategory);
+  const handleCategoryClick = (categoryName: string) => {
+    console.log(`Navigating to ${categoryName} category`);
+    // Navigate to specific category or filter logic here
+  };
+
+  const filteredCategories = categories.filter(category =>
+    category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    category.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Browse Categories</h1>
-          <p className="text-gray-600">Discover luxury items across our curated categories</p>
+      <main className="max-w-md mx-auto px-4 py-6">
+        {/* Search Bar */}
+        <div className="relative mb-8">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <Input
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full h-12 pl-12 pr-4 bg-gray-100 border-0 rounded-xl font-inter text-gray-900 placeholder:text-gray-500 focus:bg-white focus:ring-2 focus:ring-gray-200"
+          />
         </div>
 
-        {/* Category Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-          <Card 
-            className={`cursor-pointer transition-all ${selectedCategory === "all" ? "ring-2 ring-gray-900" : ""}`}
-            onClick={() => setSelectedCategory("all")}
-          >
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl mb-2">🔍</div>
-              <h3 className="font-medium text-sm">All Items</h3>
-              <Badge variant="secondary" className="mt-1">
-                {sampleProducts.length}
-              </Badge>
-            </CardContent>
-          </Card>
-          
-          {categories.map((category) => (
-            <Card 
-              key={category.name}
-              className={`cursor-pointer transition-all ${selectedCategory === category.name.toLowerCase() ? "ring-2 ring-gray-900" : ""}`}
-              onClick={() => setSelectedCategory(category.name.toLowerCase())}
+        {/* Categories List */}
+        <div className="space-y-1 mb-12">
+          {filteredCategories.map((category, index) => (
+            <button
+              key={index}
+              onClick={() => handleCategoryClick(category.name)}
+              className="w-full flex items-center justify-between p-4 bg-white hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 group"
             >
-              <CardContent className="p-4 text-center">
-                <div className="text-2xl mb-2">{category.icon}</div>
-                <h3 className="font-medium text-sm">{category.name}</h3>
-                <Badge variant="secondary" className="mt-1">
-                  {category.count}
-                </Badge>
-              </CardContent>
-            </Card>
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-lg">
+                  <span className="text-2xl">{category.icon}</span>
+                </div>
+                <div className="text-left">
+                  <h3 className="font-inter text-lg font-medium text-gray-900 tracking-wide">
+                    {category.name}
+                  </h3>
+                  <p className="font-inter text-sm text-gray-500">
+                    {category.description}
+                  </p>
+                </div>
+              </div>
+              <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
+            </button>
           ))}
         </div>
 
-        {/* Products Grid */}
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            {selectedCategory === "all" ? "All Products" : `${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)} Products`}
+        {/* Recently Viewed Section */}
+        <div className="mb-8">
+          <h2 className="font-inter text-sm font-medium text-gray-500 tracking-[0.1em] uppercase mb-4 px-1">
+            RECENTLY VIEWED
           </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <div key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
-                <ProductCard {...product} />
-              </div>
+          <div className="grid grid-cols-3 gap-4">
+            {recentlyViewedProducts.map((product) => (
+              <button
+                key={product.id}
+                onClick={() => navigate(`/product/${product.id}`)}
+                className="aspect-square bg-white rounded-xl overflow-hidden hover:shadow-md transition-shadow"
+              >
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover"
+                />
+              </button>
             ))}
           </div>
         </div>
 
-        {filteredProducts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-600">No products found in this category.</p>
-          </div>
-        )}
+        {/* Bottom spacing for mobile navigation */}
+        <div className="h-20"></div>
       </main>
 
       <MobileNavigation />
