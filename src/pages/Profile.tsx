@@ -36,16 +36,16 @@ const Profile = () => {
 
   const MenuSection = ({ title, items }: { title: string; items: any[] }) => (
     <div className="mb-8">
-      <h2 className="font-inter text-xs font-medium text-gray-500 tracking-[0.1em] uppercase mb-4 px-1">
+      <h2 className="font-inter text-xs font-semibold text-gray-500 tracking-[0.15em] uppercase mb-4 px-1 letter-spacing-wide">
         {title}
       </h2>
       <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
         {items.map((item, itemIndex) => (
           <button
             key={itemIndex}
-            className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-b-0"
+            className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-b-0"
           >
-            <span className="font-inter text-gray-900 font-medium">
+            <span className="font-inter text-gray-900 font-medium text-base">
               {item.title}
             </span>
             {item.hasArrow && (
@@ -61,23 +61,23 @@ const Profile = () => {
     <div className="min-h-screen bg-gray-50 font-inter">
       <Header />
       
-      <main className="max-w-md mx-auto px-4 py-6">
+      <main className="max-w-md mx-auto px-4 py-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="font-playfair text-3xl font-medium text-gray-900 mb-2">Account</h1>
-          <p className="font-inter text-sm text-gray-500">Manage your LUXE experience</p>
+        <div className="text-center mb-10">
+          <h1 className="font-playfair text-4xl font-semibold text-gray-900 mb-3 tracking-tight">Account</h1>
+          <p className="font-inter text-base text-gray-600 font-light">Manage your LUXE experience</p>
         </div>
 
         {/* Login Button */}
         <Button 
-          className="w-full h-14 bg-gray-900 hover:bg-gray-800 text-white font-inter font-medium text-base mb-8 rounded-2xl transition-all duration-200"
+          className="w-full h-16 bg-gray-900 hover:bg-gray-800 text-white font-inter font-medium text-lg mb-10 rounded-2xl transition-all duration-200 shadow-lg"
           onClick={() => window.location.href = '/login'}
         >
           Log In / Sign Up
         </Button>
 
         {/* Menu Sections */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           <MenuSection title="Account" items={accountMenuItems} />
           <MenuSection title="Preferences" items={preferencesMenuItems} />
           <MenuSection title="Support" items={supportMenuItems} />
@@ -85,16 +85,16 @@ const Profile = () => {
         </div>
 
         {/* Sign Out Button */}
-        <div className="mt-8 mb-8">
-          <button className="w-full flex items-center justify-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors">
+        <div className="mt-10 mb-8">
+          <button className="w-full flex items-center justify-center p-5 bg-white rounded-2xl shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors">
             <LogOut className="w-5 h-5 text-red-500 mr-3" />
-            <span className="font-inter text-red-500 font-medium">Sign Out</span>
+            <span className="font-inter text-red-500 font-medium text-base">Sign Out</span>
           </button>
         </div>
 
         {/* Version Info */}
         <div className="text-center mb-8">
-          <p className="font-inter text-xs text-gray-400">Version 2.1.0</p>
+          <p className="font-inter text-sm text-gray-400 font-light">Version 2.1.0</p>
         </div>
 
         {/* Bottom spacing for mobile navigation */}
