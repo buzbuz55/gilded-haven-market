@@ -10,109 +10,109 @@ const Privacy = () => {
       <main className="max-w-4xl mx-auto px-4 py-12">
         <div className="prose prose-gray max-w-none">
           <h1 className="font-playfair text-4xl font-semibold text-gray-900 mb-8 tracking-tight">
-            Privacy Policy & Disclaimers
+            Politique de Confidentialité & Avis de Non-Responsabilité
           </h1>
           
           <div className="space-y-8 font-inter text-gray-700 leading-relaxed">
             
             <section>
               <h2 className="font-playfair text-2xl font-semibold text-gray-900 mb-4">
-                Product Liability Disclaimer
+                Avis de Non-Responsabilité Produits
               </h2>
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-6">
-                <p className="font-semibold text-yellow-800 mb-2">IMPORTANT NOTICE:</p>
+                <p className="font-semibold text-yellow-800 mb-2">AVIS IMPORTANT :</p>
                 <p className="text-yellow-700">
-                  LUXE operates as a marketplace platform connecting buyers and sellers. We do not manufacture, own, or directly sell any products listed on our platform.
+                  LUXE opère en tant que maison de consignation royale connectant acheteurs et consignataires. Nous ne fabriquons, ne possédons, ni ne vendons directement les œuvres d'art et objets précieux répertoriés sur notre plateforme.
                 </p>
               </div>
               
               <div className="space-y-4">
                 <p>
-                  <strong>No Liability for Products:</strong> LUXE expressly disclaims all liability, responsibility, and warranties for any products sold through our platform. We do not accept any claims or liability related to:
+                  <strong>Aucune Responsabilité sur les Objets :</strong> LUXE décline expressément toute responsabilité, obligation et garantie concernant les objets vendus via notre maison de consignation. Nous n'acceptons aucune réclamation ni responsabilité concernant :
                 </p>
                 <ul className="list-disc ml-6 space-y-2">
-                  <li>Product authenticity, quality, condition, or functionality</li>
-                  <li>Product safety, defects, or compliance with regulations</li>
-                  <li>Product descriptions, specifications, or representations</li>
-                  <li>Any damages, injuries, or losses resulting from product use</li>
+                  <li>L'authenticité, la qualité, l'état ou la fonctionnalité des objets</li>
+                  <li>La sécurité, les défauts ou la conformité réglementaire des objets</li>
+                  <li>Les descriptions, spécifications ou représentations des objets</li>
+                  <li>Tout dommage, blessure ou perte résultant de l'utilisation d'objets</li>
                 </ul>
                 
                 <p>
-                  <strong>Seller Responsibility:</strong> All responsibility for products lies solely with the individual sellers who list items on our platform. Sellers are responsible for:
+                  <strong>Responsabilité du Consignataire :</strong> Toute responsabilité concernant les objets incombe exclusivement aux consignataires individuels qui répertorient les pièces sur notre plateforme. Les consignataires sont responsables de :
                 </p>
                 <ul className="list-disc ml-6 space-y-2">
-                  <li>Accurate product descriptions and representations</li>
-                  <li>Product authenticity and condition</li>
-                  <li>Compliance with all applicable laws and regulations</li>
-                  <li>Customer service and dispute resolution</li>
+                  <li>Descriptions et représentations exactes des objets</li>
+                  <li>L'authenticité et l'état des objets</li>
+                  <li>La conformité à toutes les lois et réglementations applicables</li>
+                  <li>Le service client et la résolution des litiges</li>
                 </ul>
                 
                 <p>
-                  <strong>Manufacturer Responsibility:</strong> For any issues related to product defects, safety, warranties, or recalls, buyers must contact the original manufacturer directly. LUXE has no relationship with manufacturers and cannot assist with manufacturer-related issues.
+                  <strong>Responsabilité du Fabricant :</strong> Pour toute question liée aux défauts, à la sécurité, aux garanties ou aux rappels de produits, les acheteurs doivent contacter directement le fabricant d'origine. LUXE n'entretient aucune relation avec les fabricants et ne peut assister avec les questions liées aux fabricants.
                 </p>
               </div>
             </section>
 
             <section>
               <h2 className="font-playfair text-2xl font-semibold text-gray-900 mb-4">
-                Privacy Policy
+                Politique de Confidentialité
               </h2>
               
-              <h3 className="font-semibold text-lg mb-3">Information We Collect</h3>
+              <h3 className="font-semibold text-lg mb-3">Informations que Nous Collectons</h3>
               <p className="mb-4">
-                We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us for support. This may include your name, email address, phone number, shipping address, and payment information.
+                Nous collectons les informations que vous nous fournissez directement, comme lorsque vous créez un compte, effectuez un achat, ou nous contactez pour obtenir de l'aide. Cela peut inclure votre nom, adresse e-mail, numéro de téléphone, adresse de livraison et informations de paiement.
               </p>
               
-              <h3 className="font-semibold text-lg mb-3">How We Use Your Information</h3>
+              <h3 className="font-semibold text-lg mb-3">Comment Nous Utilisons Vos Informations</h3>
               <p className="mb-4">
-                We use the information we collect to provide, maintain, and improve our services, process transactions, communicate with you, and comply with legal obligations.
+                Nous utilisons les informations collectées pour fournir, maintenir et améliorer nos services de maison de consignation, traiter les transactions, communiquer avec vous et respecter nos obligations légales.
               </p>
               
-              <h3 className="font-semibold text-lg mb-3">Information Sharing</h3>
+              <h3 className="font-semibold text-lg mb-3">Partage d'Informations</h3>
               <p className="mb-4">
-                We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy or as required by law.
+                Nous ne vendons, n'échangeons, ni ne transférons vos informations personnelles à des tiers sans votre consentement, sauf tel que décrit dans cette politique ou tel qu'exigé par la loi.
               </p>
               
-              <h3 className="font-semibold text-lg mb-3">Data Security</h3>
+              <h3 className="font-semibold text-lg mb-3">Sécurité des Données</h3>
               <p className="mb-4">
-                We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
+                Nous mettons en place des mesures de sécurité appropriées pour protéger vos informations personnelles contre l'accès non autorisé, l'altération, la divulgation ou la destruction.
               </p>
             </section>
 
             <section>
               <h2 className="font-playfair text-2xl font-semibold text-gray-900 mb-4">
-                Platform Terms
+                Conditions de la Plateforme
               </h2>
               
               <p className="mb-4">
-                <strong>AS-IS Basis:</strong> All products and services on LUXE are provided on an "as-is" basis. We make no warranties or representations about the accuracy, reliability, or completeness of any content on our platform.
+                <strong>Base "Tel Quel" :</strong> Tous les objets et services sur LUXE sont fournis sur une base "tel quel". Nous ne donnons aucune garantie ou représentation quant à l'exactitude, la fiabilité ou l'exhaustivité du contenu de notre plateforme.
               </p>
               
               <p className="mb-4">
-                <strong>Limitation of Liability:</strong> To the fullest extent permitted by law, LUXE shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues.
+                <strong>Limitation de Responsabilité :</strong> Dans toute la mesure permise par la loi, LUXE ne sera pas responsable des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs, ou de toute perte de profits ou de revenus.
               </p>
               
               <p className="mb-4">
-                <strong>Dispute Resolution:</strong> Any disputes regarding products must be resolved directly between buyers and sellers. LUXE may facilitate communication but is not responsible for resolving product-related disputes.
+                <strong>Résolution des Litiges :</strong> Tout litige concernant les objets doit être résolu directement entre acheteurs et consignataires. LUXE peut faciliter la communication mais n'est pas responsable de résoudre les litiges liés aux objets.
               </p>
             </section>
 
             <section>
               <h2 className="font-playfair text-2xl font-semibold text-gray-900 mb-4">
-                Contact Information
+                Informations de Contact
               </h2>
               <p>
-                If you have questions about this Privacy Policy, please contact us at:
+                Si vous avez des questions concernant cette Politique de Confidentialité, veuillez nous contacter à :
               </p>
               <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                <p><strong>Email:</strong> privacy@luxe.com</p>
-                <p><strong>Address:</strong> LUXE Legal Department, [Address]</p>
+                <p><strong>E-mail :</strong> confidentialite@luxe.com</p>
+                <p><strong>Adresse :</strong> LUXE Département Juridique, [Adresse]</p>
               </div>
             </section>
 
             <div className="mt-8 pt-6 border-t border-gray-200">
               <p className="text-sm text-gray-500">
-                Last updated: {new Date().toLocaleDateString()}
+                Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}
               </p>
             </div>
           </div>

@@ -14,27 +14,27 @@ const HeroSection = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white px-6">
                 <h1 className="font-playfair text-4xl md:text-6xl font-bold mb-4 tracking-tight">
-                  Sell Your Luxury
+                  Consign Your Treasures
                 </h1>
                 <h2 className="text-3xl md:text-5xl font-light mb-6">
-                  For Maximum Value
+                  À La Maison Royale
                 </h2>
                 <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
-                  Join the world's most trusted luxury marketplace. Get authenticated, get noticed, get paid.
+                  Join the most prestigious luxury consignment house. Where extraordinary pieces find their destined collectors.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
                     size="lg" 
                     className="bg-white text-black hover:bg-gray-100 font-medium px-8 py-3 text-lg"
                   >
-                    SELL NOW
+                    CONSIGN WITH LUXE
                   </Button>
                   <Button 
                     variant="outline"
                     size="lg" 
                     className="border-white text-white hover:bg-white/10 font-medium px-8 py-3 text-lg"
                   >
-                    EXPLORE COLLECTIONS
+                    DISCOVER RARITIES
                   </Button>
                 </div>
               </div>

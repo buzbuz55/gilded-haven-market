@@ -5,39 +5,39 @@ import { TrendingUp, Shield, DollarSign, Clock, Users, Star } from "lucide-react
 const sellingPoints = [
   {
     icon: DollarSign,
-    title: "Maximum Returns",
-    description: "Get up to 90% of your item's market value with our premium seller program",
-    highlight: "Up to 90% payout"
+    title: "Exceptional Valuations",
+    description: "Receive up to 90% of market value through our exclusive Maison Royale consignment program",
+    highlight: "Jusqu'à 90%"
   },
   {
     icon: Shield,
-    title: "Secure & Protected",
-    description: "Full insurance coverage and authentication guarantee for all transactions",
-    highlight: "100% Protected"
+    title: "Château-Level Security",
+    description: "Complete provenance documentation and white-glove insurance for every precious artifact",
+    highlight: "Sécurité Totale"
   },
   {
     icon: Clock,
-    title: "Quick Turnaround",
-    description: "From listing to payment in as little as 48 hours with our expedited service",
-    highlight: "48hr Processing"
+    title: "Swift Nobility",
+    description: "From consignment to payment within 48 hours via our expedited royal courier service",
+    highlight: "48h Royale"
   },
   {
     icon: Users,
-    title: "Global Reach",
-    description: "Access to over 500K+ verified luxury buyers worldwide",
-    highlight: "500K+ Buyers"
+    title: "Global Aristocracy",
+    description: "Exclusive access to 500K+ verified collectors and connoisseurs worldwide",
+    highlight: "500K+ Nobles"
   },
   {
     icon: TrendingUp,
-    title: "Market Expertise",
-    description: "Professional pricing guidance and market insights to maximize your sale",
-    highlight: "Expert Pricing"
+    title: "Maître d'Expertise",
+    description: "Certified appraisers and market specialists ensure your treasures achieve their true worth",
+    highlight: "Expert Maîtres"
   },
   {
     icon: Star,
-    title: "White Glove Service",
-    description: "Personal concierge support throughout your entire selling journey",
-    highlight: "VIP Treatment"
+    title: "Service Impérial",
+    description: "Personal concierge accompanies you through every step of your royal consignment journey",
+    highlight: "Concierge VIP"
   }
 ];
 
@@ -47,25 +47,25 @@ const SellersSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Turn Your Luxury into Profit
+            Transform Treasures into Fortune
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Join thousands of sellers who trust LUXE to sell their luxury items. 
-            From authentication to payment, we handle everything so you can focus on what matters most.
+            Join the most prestigious luxury consignment maison, where extraordinary pieces meet their destined collectors. 
+            From authentication royale to swift payment, we orchestrate every detail with imperial precision.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
               className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 text-lg font-medium"
             >
-              START SELLING TODAY
+              CONSIGN À LA LUXE
             </Button>
             <Button 
               variant="outline" 
               size="lg"
               className="border-gray-400 hover:border-gray-600 px-8 py-4 text-lg font-medium"
             >
-              GET FREE VALUATION
+              ESTIMATION GRATUITE
             </Button>
           </div>
         </div>
@@ -94,15 +94,15 @@ const SellersSection = () => {
         <div className="bg-white rounded-3xl p-12 shadow-lg">
           <div className="text-center mb-12">
             <h3 className="font-playfair text-3xl font-bold text-gray-900 mb-4">
-              Success Stories
+              Histoires de Succès Royales
             </h3>
-            <p className="text-gray-600 text-lg">Real sellers, real results</p>
+            <p className="text-gray-600 text-lg">Véritables consignataires, résultats extraordinaires</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-green-600 mb-2">$47,500</div>
-              <p className="text-gray-600 mb-4">Sold Hermès Birkin in 24 hours</p>
+              <div className="text-4xl font-bold text-green-600 mb-2">€47,500</div>
+              <p className="text-gray-600 mb-4">Hermès Birkin vendu en 24 heures</p>
               <div className="flex justify-center text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
@@ -110,8 +110,8 @@ const SellersSection = () => {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-green-600 mb-2">$23,800</div>
-              <p className="text-gray-600 mb-4">Vintage Rolex collection</p>
+              <div className="text-4xl font-bold text-green-600 mb-2">€23,800</div>
+              <p className="text-gray-600 mb-4">Collection Rolex vintage</p>
               <div className="flex justify-center text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
@@ -119,8 +119,8 @@ const SellersSection = () => {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-green-600 mb-2">$15,200</div>
-              <p className="text-gray-600 mb-4">Contemporary art piece</p>
+              <div className="text-4xl font-bold text-green-600 mb-2">€15,200</div>
+              <p className="text-gray-600 mb-4">Œuvre d'art contemporaine</p>
               <div className="flex justify-center text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
