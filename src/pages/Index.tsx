@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import CategoryGrid from "@/components/CategoryGrid";
 import EditorsPicksSection from "@/components/EditorsPicksSection";
 import TrendingProducts from "@/components/TrendingProducts";
+import LuxuryCollection from "@/components/LuxuryCollection";
 import RecentlyViewedProducts from "@/components/RecentlyViewedProducts";
 import TrustSection from "@/components/TrustSection";
 import NewsletterSection from "@/components/NewsletterSection";
@@ -42,6 +43,7 @@ const Index = () => {
           </div>
         </section>
         
+        <LuxuryCollection />
         <SellersSection />
         <WhyChooseUsSection />
         <RecentlyViewedProducts />
