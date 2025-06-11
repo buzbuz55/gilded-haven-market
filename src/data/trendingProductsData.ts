@@ -1,4 +1,3 @@
-
 export const trendingProducts = [
   {
     id: "1",
@@ -286,5 +285,95 @@ export const trendingProducts = [
     brand: "Collection Art Nouveau",
     category: "bijoux d'art",
     isNew: true
+  },
+  {
+    id: "37",
+    title: "Bracelet Diamants Sophistiqué Platine",
+    price: "€385,000",
+    image: "/lovable-uploads/9a8751b4-4830-4888-bda4-c0cf33464e90.png",
+    brand: "Haute Joaillerie Parisienne",
+    category: "haute joaillerie",
+    isNew: true
+  },
+  {
+    id: "38",
+    title: "Bague Torsadée Or Jaune Diamants",
+    price: "€75,000",
+    originalPrice: "€85,000",
+    image: "/lovable-uploads/c0059dc2-694b-464c-a351-d379a3c7a380.png",
+    brand: "Maison Contemporaine",
+    category: "haute joaillerie",
+    isSale: true
+  },
+  {
+    id: "39",
+    title: "Collier Maille d'Or Pierres Précieuses",
+    price: "€450,000",
+    image: "/lovable-uploads/d34196d6-9557-4772-a7ff-1ed73ed6beef.png",
+    brand: "Collection Royale Exceptionnelle",
+    category: "haute joaillerie",
+    isNew: true
+  },
+  {
+    id: "40",
+    title: "Bracelet Oriental Or Jaune Émeraudes",
+    price: "€295,000",
+    image: "/lovable-uploads/d77959f3-630e-4f8e-aa5a-8ca049d5ce79.png",
+    brand: "Joaillerie Orientale Luxe",
+    category: "haute joaillerie",
+  },
+  {
+    id: "41",
+    title: "Bracelet Émeraudes Colombiennes Royales",
+    price: "€565,000",
+    originalPrice: "€625,000",
+    image: "/lovable-uploads/d9748bb5-28a0-4a98-ba91-2c345a58ea7c.png",
+    brand: "Collection Impériale",
+    category: "haute joaillerie",
+    isSale: true
+  },
+  {
+    id: "42",
+    title: "Montre Chanel Première Matelassée Noire",
+    price: "€35,000",
+    image: "/lovable-uploads/35207a47-f86d-4263-a695-2451878962da.png",
+    brand: "Chanel Horlogerie",
+    category: "horlogerie de luxe",
+    isNew: true
+  },
+  {
+    id: "43",
+    title: "Alliance Diamants Vintage Or Jaune",
+    price: "€28,500",
+    image: "/lovable-uploads/3229348e-1afb-43c1-ab93-8e7f11bdc08c.png",
+    brand: "Patrimoine Joaillier",
+    category: "haute joaillerie",
+  },
+  {
+    id: "44",
+    title: "Collier Étoile Filante Diamants Cascades",
+    price: "€185,000",
+    originalPrice: "€215,000",
+    image: "/lovable-uploads/bb1f1bb9-3110-4fa3-96e7-87e9fb226ba2.png",
+    brand: "Constellation Moderne",
+    category: "haute joaillerie",
+    isSale: true
+  },
+  {
+    id: "45",
+    title: "Broche Émail Bleu Art Nouveau Exceptionnelle",
+    price: "€125,000",
+    image: "/lovable-uploads/83321ecd-b6cb-40b4-adf0-a04b9eef9b73.png",
+    brand: "Collection Art Nouveau Premium",
+    category: "bijoux d'art",
+    isNew: true
+  },
+  {
+    id: "46",
+    title: "Bracelet Fleur Noire Or Rose Diamants",
+    price: "€95,000",
+    image: "/lovable-uploads/48018bf7-3ed6-4721-8cf8-add84f0a70ba.png",
+    brand: "Haute Joaillerie Contemporaine",
+    category: "haute joaillerie",
   }
 ];
