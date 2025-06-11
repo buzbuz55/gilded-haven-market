@@ -23,6 +23,8 @@ export default {
 				'playfair': ['Playfair Display', 'serif'],
 				'inter': ['Inter', 'sans-serif'],
 				'sans': ['Inter', 'sans-serif'],
+				'luxury': ['Playfair Display', 'Georgia', 'serif'],
+				'elegant': ['Inter', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -67,6 +69,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				luxe: {
+					gold: '#D4AF37',
+					'gold-light': '#F7E98E',
+					'gold-dark': '#B8860B',
+					charcoal: '#36454F',
+					pearl: '#F8F8FF',
+					champagne: '#F7E7CE'
 				}
 			},
 			borderRadius: {
@@ -90,11 +100,22 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'luxury-pulse': {
+					'0%, 100%': {
+						opacity: '1',
+						transform: 'scale(1)'
+					},
+					'50%': {
+						opacity: '0.8',
+						transform: 'scale(1.05)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'luxury-pulse': 'luxury-pulse 3s ease-in-out infinite'
 			}
 		}
 	},

@@ -6,6 +6,7 @@ import CategoryGrid from "@/components/CategoryGrid";
 import EditorsPicksSection from "@/components/EditorsPicksSection";
 import TrendingProducts from "@/components/TrendingProducts";
 import LuxuryCollection from "@/components/LuxuryCollection";
+import AuctionSection from "@/components/AuctionSection";
 import RecentlyViewedProducts from "@/components/RecentlyViewedProducts";
 import TrustSection from "@/components/TrustSection";
 import NewsletterSection from "@/components/NewsletterSection";
@@ -37,7 +38,7 @@ const Index = () => {
         <section className="py-12 px-4 bg-gradient-to-r from-gray-900 via-black to-gray-900">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">
-              Maison Royale d'Excellence
+              Maison Luxe d'Excellence
             </h2>
             <p className="text-amber-200 text-lg font-light tracking-wide">
               Où les trésors rencontrent leurs collectionneurs destinés
@@ -46,6 +47,7 @@ const Index = () => {
         </section>
         
         <LuxuryCollection />
+        <AuctionSection />
         <SellersSection />
         <WhyChooseUsSection />
         <RecentlyViewedProducts />

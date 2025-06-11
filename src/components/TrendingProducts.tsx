@@ -117,6 +117,83 @@ const trendingProducts = [
     image: "/lovable-uploads/f8a072cf-ab2f-4c3a-87e7-ff07d4556a0b.png",
     brand: "Tiffany & Co",
     category: "objets d'art",
+  },
+  {
+    id: "18",
+    title: "Secrétaire Louis XV Bleu Provence",
+    price: "€45,000",
+    image: "/lovable-uploads/233c8d87-8162-4a99-a5b5-3651fd6f4cfc.png",
+    brand: "Mobilier d'Exception",
+    category: "mobilier ancien",
+    isNew: true
+  },
+  {
+    id: "19",
+    title: "Bracelet Art Déco Diamants Platine",
+    price: "€285,000",
+    image: "/lovable-uploads/e5021bfe-7f3a-4390-8d80-778b82752be3.png",
+    brand: "Collection Art Déco",
+    category: "haute joaillerie",
+  },
+  {
+    id: "20",
+    title: "Broche Saphirs & Diamants Jarretière",
+    price: "€195,000",
+    image: "/lovable-uploads/97e466b2-3c00-4374-a7c9-717d060e90b0.png",
+    brand: "Joaillerie Impériale",
+    category: "haute joaillerie",
+    isNew: true
+  },
+  {
+    id: "21",
+    title: "Bracelet Géométrique Diamants",
+    price: "€165,000",
+    originalPrice: "€190,000",
+    image: "/lovable-uploads/dde580ee-890e-41e1-97bf-4a31b4477bc5.png",
+    brand: "Maison Contemporaine",
+    category: "haute joaillerie",
+    isSale: true
+  },
+  {
+    id: "22",
+    title: "Plateau Agate Bleue Céleste",
+    price: "€12,500",
+    image: "/lovable-uploads/4ea6babe-ba7c-4469-92bb-20afa242b397.png",
+    brand: "Objets Précieux",
+    category: "objets d'art",
+  },
+  {
+    id: "23",
+    title: "Bague Art Déco Émeraude & Diamants",
+    price: "€78,000",
+    image: "/lovable-uploads/9cde1c8e-eb8b-44a1-8aeb-82ac3f45d57d.png",
+    brand: "Patrimoine Joaillier",
+    category: "haute joaillerie",
+  },
+  {
+    id: "24",
+    title: "Coupe Cristal Baccarat Dorée",
+    price: "€8,750",
+    image: "/lovable-uploads/7d086724-acc7-4df4-9e50-4b7fe066473d.png",
+    brand: "Baccarat Crystal",
+    category: "arts de la table",
+  },
+  {
+    id: "25",
+    title: "Broche Papillon Diamants Multicolores",
+    price: "€145,000",
+    image: "/lovable-uploads/bc4f15f9-ff40-4bfc-879c-fc3d8d4d1ebd.png",
+    brand: "Haute Joaillerie Contemporaine",
+    category: "haute joaillerie",
+    isNew: true
+  },
+  {
+    id: "26",
+    title: "Boucles d'Oreilles Saphir Ceylon",
+    price: "€95,000",
+    image: "/lovable-uploads/90385b67-236d-4462-826c-06e84ea15fa8.png",
+    brand: "Pierres Précieuses d'Exception",
+    category: "haute joaillerie",
   }
 ];
 
