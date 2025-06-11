@@ -35,22 +35,22 @@ const Profile = () => {
   ];
 
   const MenuSection = ({ title, items }: { title: string; items: any[] }) => (
-    <div className="mb-8">
-      <h2 className="font-inter text-xs font-semibold text-gray-500 tracking-[0.15em] uppercase mb-4 px-1 letter-spacing-wide">
+    <div className="mb-6">
+      <h2 className="font-inter text-sm font-medium text-muted-foreground uppercase tracking-wider mb-3 px-4">
         {title}
       </h2>
-      <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+      <div className="bg-card border border-border rounded-lg overflow-hidden">
         {items.map((item, itemIndex) => (
           <button
             key={itemIndex}
-            className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-b-0"
+            className="w-full flex items-center justify-between px-4 py-4 hover:bg-accent transition-colors border-b border-border last:border-b-0"
             onClick={item.onClick}
           >
-            <span className="font-inter text-gray-900 font-medium text-base">
+            <span className="font-inter text-foreground font-medium text-base">
               {item.title}
             </span>
             {item.hasArrow && (
-              <ChevronRight className="w-5 h-5 text-gray-400" />
+              <ChevronRight className="w-5 h-5 text-muted-foreground" />
             )}
           </button>
         ))}
@@ -59,43 +59,42 @@ const Profile = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 font-inter">
+    <div className="min-h-screen bg-background font-inter">
       <Header />
       
-      <main className="max-w-md mx-auto px-4 py-8">
+      <main className="max-w-md mx-auto px-4 py-6">
         {/* Header */}
-        <div className="text-center mb-10">
-          <h1 className="font-playfair text-4xl font-semibold text-gray-900 mb-3 tracking-tight">Mon Compte</h1>
-          <p className="font-inter text-base text-gray-600 font-light">Gérez votre expérience LUXE royale</p>
+        <div className="text-center mb-8">
+          <h1 className="font-playfair text-3xl font-semibold text-foreground mb-2 tracking-tight">ACCOUNT</h1>
         </div>
 
         {/* Login Button */}
         <Button 
-          className="w-full h-16 bg-gray-900 hover:bg-gray-800 text-white font-inter font-medium text-lg mb-10 rounded-2xl transition-all duration-200 shadow-lg"
+          className="w-full h-14 bg-foreground hover:bg-foreground/90 text-background font-inter font-medium text-base mb-8 rounded-lg transition-all duration-200"
           onClick={() => window.location.href = '/login'}
         >
-          Se Connecter / S'Inscrire
+          LOG IN / SIGN UP
         </Button>
 
         {/* Menu Sections */}
-        <div className="space-y-8">
+        <div className="space-y-6">
           <MenuSection title="Compte" items={accountMenuItems} />
           <MenuSection title="Préférences" items={preferencesMenuItems} />
           <MenuSection title="Support" items={supportMenuItems} />
-          <MenuSection title="Légal" items={legalMenuItems} />
+          <MenuSection title="Plus" items={legalMenuItems} />
         </div>
 
         {/* Sign Out Button */}
-        <div className="mt-10 mb-8">
-          <button className="w-full flex items-center justify-center p-5 bg-white rounded-2xl shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors">
-            <LogOut className="w-5 h-5 text-red-500 mr-3" />
-            <span className="font-inter text-red-500 font-medium text-base">Se Déconnecter</span>
+        <div className="mt-8 mb-6">
+          <button className="w-full flex items-center justify-center px-4 py-4 bg-card border border-border rounded-lg hover:bg-accent transition-colors">
+            <LogOut className="w-5 h-5 text-destructive mr-3" />
+            <span className="font-inter text-destructive font-medium text-base">Se Déconnecter</span>
           </button>
         </div>
 
         {/* Version Info */}
         <div className="text-center mb-8">
-          <p className="font-inter text-sm text-gray-400 font-light">Version 2.1.0</p>
+          <p className="font-inter text-sm text-muted-foreground">Version 2.1.0</p>
         </div>
 
         {/* Bottom spacing for mobile navigation */}
