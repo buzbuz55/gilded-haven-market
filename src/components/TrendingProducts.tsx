@@ -73,6 +73,50 @@ const trendingProducts = [
     image: "/lovable-uploads/6bb89a4f-0aca-465e-a73a-9af83281019d.png",
     brand: "Louis Vuitton Malletier",
     category: "maroquinerie de luxe",
+  },
+  {
+    id: "11",
+    title: "Sac Hermès Birkin Vert Menthe",
+    price: "€89,000",
+    image: "/lovable-uploads/323da33a-8f0e-4a67-b837-5238d8a80a0e.png",
+    brand: "Hermès Maroquinerie",
+    category: "maroquinerie de luxe",
+    isNew: true
+  },
+  {
+    id: "12",
+    title: "Sac Hermès Birkin Émeraude Crocodile",
+    price: "€125,000",
+    image: "/lovable-uploads/d58c9a62-391c-4c93-8199-d23d1f2aff0d.png",
+    brand: "Hermès Collection Exceptionnelle",
+    category: "maroquinerie de luxe",
+  },
+  {
+    id: "13",
+    title: "Sac Hermès Constance Crocodile Noir",
+    price: "€67,500",
+    originalPrice: "€75,000",
+    image: "/lovable-uploads/75ec24fb-e9e2-43a3-88a8-f0a300352421.png",
+    brand: "Hermès Paris",
+    category: "maroquinerie de luxe",
+    isSale: true
+  },
+  {
+    id: "14",
+    title: "Montre Richard Mille RM 011",
+    price: "€280,000",
+    image: "/lovable-uploads/9a9595a3-3ce6-4d96-b8cf-4550a653c825.png",
+    brand: "Richard Mille",
+    category: "horlogerie d'exception",
+    isNew: true
+  },
+  {
+    id: "15",
+    title: "Éléphant Doré Tiffany & Co",
+    price: "€24,500",
+    image: "/lovable-uploads/f8a072cf-ab2f-4c3a-87e7-ff07d4556a0b.png",
+    brand: "Tiffany & Co",
+    category: "objets d'art",
   }
 ];
 
@@ -93,7 +137,7 @@ const TrendingProducts = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
           {trendingProducts.map((product) => (
             <ProductCard
               key={product.id}

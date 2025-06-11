@@ -20,6 +20,23 @@ const luxuryCollectionItems = [
     brand: "Chanel Fine Jewelry",
     category: "joaillerie contemporaine",
     isSale: true
+  },
+  {
+    id: "16",
+    title: "Montre Richard Mille RM 011 Édition Limitée",
+    price: "€320,000",
+    image: "/lovable-uploads/9a9595a3-3ce6-4d96-b8cf-4550a653c825.png",
+    brand: "Richard Mille Manufacture",
+    category: "horlogerie d'exception",
+    isNew: true
+  },
+  {
+    id: "17",
+    title: "Sac Hermès Birkin So Black Crocodile",
+    price: "€180,000",
+    image: "/lovable-uploads/75ec24fb-e9e2-43a3-88a8-f0a300352421.png",
+    brand: "Hermès Collection Privée",
+    category: "maroquinerie exceptionnelle",
   }
 ];
 
@@ -40,7 +57,7 @@ const LuxuryCollection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {luxuryCollectionItems.map((item) => (
             <div key={item.id} className="group relative">
               <ProductCard {...item} />
