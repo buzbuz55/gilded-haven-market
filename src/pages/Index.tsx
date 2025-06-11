@@ -1,6 +1,7 @@
 
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import CollectionsOverview from "@/components/CollectionsOverview";
 import CategoryGrid from "@/components/CategoryGrid";
 import EditorsPicksSection from "@/components/EditorsPicksSection";
 import TrendingProducts from "@/components/TrendingProducts";
@@ -19,6 +20,7 @@ const Index = () => {
       
       <main>
         <HeroSection />
+        <CollectionsOverview />
         <CategoryGrid />
         
         {/* Elegant Divider */}
