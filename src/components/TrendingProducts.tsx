@@ -1,4 +1,3 @@
-
 import ProductCard from "./ProductCard";
 
 const trendingProducts = [
@@ -194,6 +193,100 @@ const trendingProducts = [
     image: "/lovable-uploads/90385b67-236d-4462-826c-06e84ea15fa8.png",
     brand: "Pierres Précieuses d'Exception",
     category: "haute joaillerie",
+  },
+  {
+    id: "27",
+    title: "Boucles d'Oreilles Saphir Royal",
+    price: "€125,000",
+    originalPrice: "€145,000",
+    image: "/lovable-uploads/04a1cdfc-aba5-4cd9-9717-87117c2036c4.png",
+    brand: "Joaillerie Royale",
+    category: "haute joaillerie",
+    isSale: true
+  },
+  {
+    id: "28",
+    title: "Manchettes Diamants Sculpture",
+    price: "€285,000",
+    image: "/lovable-uploads/cab08419-9bb5-411c-9eb5-1bfb5b2e9f11.png",
+    brand: "Haute Joaillerie Contemporaine",
+    category: "haute joaillerie",
+    isNew: true
+  },
+  {
+    id: "29",
+    title: "Bague Torsadée Or & Diamants",
+    price: "€45,500",
+    originalPrice: "€52,000",
+    image: "/lovable-uploads/d680c704-760c-47b1-91d8-090053404fe6.png",
+    brand: "Maison Cartier",
+    category: "haute joaillerie",
+    isSale: true
+  },
+  {
+    id: "30",
+    title: "Bracelet Dragon Oriental Émeraudes",
+    price: "€195,000",
+    image: "/lovable-uploads/8a8618fe-302e-4fda-8e64-785c154cc5c2.png",
+    brand: "Collection Asiatique",
+    category: "haute joaillerie",
+    isNew: true
+  },
+  {
+    id: "31",
+    title: "Bracelet Émeraudes Impériales",
+    price: "€325,000",
+    originalPrice: "€375,000",
+    image: "/lovable-uploads/690d00df-ed63-4982-9911-e6d736f564dd.png",
+    brand: "Joaillerie Impériale",
+    category: "haute joaillerie",
+    isSale: true
+  },
+  {
+    id: "32",
+    title: "Collier Maille Précieuse Multi-Pierres",
+    price: "€165,000",
+    image: "/lovable-uploads/77038f8b-5074-4572-b223-6a03541a7e00.png",
+    brand: "Haute Couture Joaillerie",
+    category: "haute joaillerie",
+    isNew: true
+  },
+  {
+    id: "33",
+    title: "Montre Chanel Première Matelassée",
+    price: "€28,500",
+    originalPrice: "€32,000",
+    image: "/lovable-uploads/a9249f30-fc38-432c-8935-d9ebd6555dcf.png",
+    brand: "Chanel Horlogerie",
+    category: "horlogerie de luxe",
+    isSale: true
+  },
+  {
+    id: "34",
+    title: "Alliance Diamants Éternelle",
+    price: "€18,750",
+    image: "/lovable-uploads/25b29b5e-fc08-487b-9745-65eb3954543a.png",
+    brand: "Maison d'Alliance",
+    category: "haute joaillerie",
+  },
+  {
+    id: "35",
+    title: "Collier Étoile Filante Diamants",
+    price: "€145,000",
+    originalPrice: "€165,000",
+    image: "/lovable-uploads/9b132ae2-a3ca-467a-94bf-09fb82428383.png",
+    brand: "Constellation Joaillerie",
+    category: "haute joaillerie",
+    isSale: true
+  },
+  {
+    id: "36",
+    title: "Broche Art Nouveau Émail Bleu",
+    price: "€35,000",
+    image: "/lovable-uploads/6f1fb3bf-d2f4-431d-945f-8a7f3217d99a.png",
+    brand: "Collection Art Nouveau",
+    category: "bijoux d'art",
+    isNew: true
   }
 ];
 

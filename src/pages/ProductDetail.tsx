@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Heart, Share2, ArrowLeft, ChevronRight, Star, Info, Shield, Truck, RotateCcw, Crown, Certificate } from "lucide-react";
+import { Heart, Share2, ArrowLeft, ChevronRight, Star, Info, Shield, Truck, RotateCcw, Crown, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -206,7 +206,7 @@ const ProductDetail = () => {
               <div className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-xl border border-gray-200/50 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
-                    <Certificate className="w-5 h-5 text-white" />
+                    <Award className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Certificat d'Authenticité</p>
