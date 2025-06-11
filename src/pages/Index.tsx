@@ -13,14 +13,35 @@ import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50/30 via-white to-blue-50/20">
       <Header />
       
       <main>
         <HeroSection />
         <CategoryGrid />
+        
+        {/* Elegant Divider */}
+        <div className="py-8">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="h-px bg-gradient-to-r from-transparent via-amber-200 to-transparent"></div>
+          </div>
+        </div>
+        
         <EditorsPicksSection />
         <TrendingProducts />
+        
+        {/* Luxury Accent Section */}
+        <section className="py-12 px-4 bg-gradient-to-r from-gray-900 via-black to-gray-900">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">
+              Maison Royale d'Excellence
+            </h2>
+            <p className="text-amber-200 text-lg font-light tracking-wide">
+              Où les trésors rencontrent leurs collectionneurs destinés
+            </p>
+          </div>
+        </section>
+        
         <SellersSection />
         <WhyChooseUsSection />
         <RecentlyViewedProducts />
