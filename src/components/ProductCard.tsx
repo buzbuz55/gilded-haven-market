@@ -2,7 +2,7 @@
 import { Heart, ShoppingBag, MessageCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useCallback, memo } from "react";
 
 interface ProductCardProps {
   id: string;
@@ -16,7 +16,7 @@ interface ProductCardProps {
   isSale?: boolean;
 }
 
-const ProductCard = ({ 
+const ProductCard = memo(({ 
   id,
   title, 
   price, 
@@ -31,26 +31,24 @@ const ProductCard = ({
   const [isFavorited, setIsFavorited] = useState(false);
   const [showOfferChat, setShowOfferChat] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     navigate(`/product/${id}`);
-  };
+  }, [navigate, id]);
 
-  const handleFavoriteClick = (e: React.MouseEvent) => {
+  const handleFavoriteClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsFavorited(!isFavorited);
-    console.log("Added to favorites");
-  };
+    setIsFavorited(prev => !prev);
+  }, []);
 
-  const handleAddToBag = (e: React.MouseEvent) => {
+  const handleAddToBag = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
     console.log("Added to shopping bag");
-  };
+  }, []);
 
-  const handleOfferClick = (e: React.MouseEvent) => {
+  const handleOfferClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
-    setShowOfferChat(!showOfferChat);
-    console.log("Opening offer chat");
-  };
+    setShowOfferChat(prev => !prev);
+  }, []);
 
   return (
     <div 
@@ -62,6 +60,7 @@ const ProductCard = ({
           <img 
             src={image} 
             alt={title}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
           />
         </div>
@@ -176,6 +175,8 @@ const ProductCard = ({
       </div>
     </div>
   );
-};
+});
+
+ProductCard.displayName = "ProductCard";
 
 export default ProductCard;

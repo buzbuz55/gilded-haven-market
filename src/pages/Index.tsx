@@ -1,28 +1,47 @@
 
+import { memo, lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import CollectionsOverview from "@/components/CollectionsOverview";
-import CategoryGrid from "@/components/CategoryGrid";
-import EditorsPicksSection from "@/components/EditorsPicksSection";
-import TrendingProducts from "@/components/TrendingProducts";
-import LuxuryCollection from "@/components/LuxuryCollection";
-import AuctionSection from "@/components/AuctionSection";
-import RecentlyViewedProducts from "@/components/RecentlyViewedProducts";
-import TrustSection from "@/components/TrustSection";
-import NewsletterSection from "@/components/NewsletterSection";
 import MobileNavigation from "@/components/MobileNavigation";
-import SellersSection from "@/components/SellersSection";
-import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 
-const Index = () => {
+// Lazy load heavy components for better initial performance
+const CollectionsOverview = lazy(() => import("@/components/CollectionsOverview"));
+const CategoryGrid = lazy(() => import("@/components/CategoryGrid"));
+const EditorsPicksSection = lazy(() => import("@/components/EditorsPicksSection"));
+const TrendingProducts = lazy(() => import("@/components/TrendingProducts"));
+const LuxuryCollection = lazy(() => import("@/components/LuxuryCollection"));
+const AuctionSection = lazy(() => import("@/components/AuctionSection"));
+const RecentlyViewedProducts = lazy(() => import("@/components/RecentlyViewedProducts"));
+const TrustSection = lazy(() => import("@/components/TrustSection"));
+const NewsletterSection = lazy(() => import("@/components/NewsletterSection"));
+const SellersSection = lazy(() => import("@/components/SellersSection"));
+const WhyChooseUsSection = lazy(() => import("@/components/WhyChooseUsSection"));
+
+const LazyComponent = ({ children }: { children: React.ReactNode }) => (
+  <Suspense fallback={
+    <div className="py-8 flex justify-center">
+      <div className="w-6 h-6 border-2 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+    </div>
+  }>
+    {children}
+  </Suspense>
+);
+
+const Index = memo(() => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50/30 via-white to-blue-50/20">
       <Header />
       
       <main>
         <HeroSection />
-        <CollectionsOverview />
-        <CategoryGrid />
+        
+        <LazyComponent>
+          <CollectionsOverview />
+        </LazyComponent>
+        
+        <LazyComponent>
+          <CategoryGrid />
+        </LazyComponent>
         
         {/* Elegant Divider */}
         <div className="py-8">
@@ -31,8 +50,13 @@ const Index = () => {
           </div>
         </div>
         
-        <EditorsPicksSection />
-        <TrendingProducts />
+        <LazyComponent>
+          <EditorsPicksSection />
+        </LazyComponent>
+        
+        <LazyComponent>
+          <TrendingProducts />
+        </LazyComponent>
         
         {/* Luxury Accent Section */}
         <section className="py-12 px-4 bg-gradient-to-r from-gray-900 via-black to-gray-900">
@@ -46,13 +70,33 @@ const Index = () => {
           </div>
         </section>
         
-        <LuxuryCollection />
-        <AuctionSection />
-        <SellersSection />
-        <WhyChooseUsSection />
-        <RecentlyViewedProducts />
-        <TrustSection />
-        <NewsletterSection />
+        <LazyComponent>
+          <LuxuryCollection />
+        </LazyComponent>
+        
+        <LazyComponent>
+          <AuctionSection />
+        </LazyComponent>
+        
+        <LazyComponent>
+          <SellersSection />
+        </LazyComponent>
+        
+        <LazyComponent>
+          <WhyChooseUsSection />
+        </LazyComponent>
+        
+        <LazyComponent>
+          <RecentlyViewedProducts />
+        </LazyComponent>
+        
+        <LazyComponent>
+          <TrustSection />
+        </LazyComponent>
+        
+        <LazyComponent>
+          <NewsletterSection />
+        </LazyComponent>
       </main>
 
       <MobileNavigation />
@@ -61,6 +105,8 @@ const Index = () => {
       <div className="h-16 md:hidden"></div>
     </div>
   );
-};
+});
+
+Index.displayName = "Index";
 
 export default Index;

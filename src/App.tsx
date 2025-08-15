@@ -5,16 +5,19 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ShoppingCartProvider } from "@/contexts/ShoppingCartContext";
-import Index from "./pages/Index";
-import ProductDetail from "./pages/ProductDetail";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Payment from "./pages/Payment";
-import Messages from "./pages/Messages";
-import Profile from "./pages/Profile";
-import Categories from "./pages/Categories";
-import Privacy from "./pages/Privacy";
-import NotFound from "./pages/NotFound";
+import { lazy, Suspense } from "react";
+
+// Lazy load pages for better performance
+const Index = lazy(() => import("./pages/Index"));
+const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+const Login = lazy(() => import("./pages/Login"));
+const Signup = lazy(() => import("./pages/Signup"));
+const Payment = lazy(() => import("./pages/Payment"));
+const Messages = lazy(() => import("./pages/Messages"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Categories = lazy(() => import("./pages/Categories"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -25,19 +28,28 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/privacy" element={<Privacy />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={
+            <div className="min-h-screen bg-background flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                <p className="text-muted-foreground font-inter">Loading...</p>
+              </div>
+            </div>
+          }>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="/messages" element={<Messages />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/privacy" element={<Privacy />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </ShoppingCartProvider>

@@ -1,18 +1,22 @@
 
-import ProductCard from "../ProductCard";
+import { memo, useMemo } from "react";
+import VirtualizedProductGrid from "../VirtualizedProductGrid";
 import { trendingProducts } from "@/data/trendingProductsData";
 
-const ProductsGrid = () => {
+const ProductsGrid = memo(() => {
+  // Limit initial render to improve performance
+  const displayProducts = useMemo(() => 
+    trendingProducts.slice(0, 12), 
+    []
+  );
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
-      {trendingProducts.map((product) => (
-        <ProductCard
-          key={product.id}
-          {...product}
-        />
-      ))}
+    <div className="mb-16">
+      <VirtualizedProductGrid products={displayProducts} />
     </div>
   );
-};
+});
+
+ProductsGrid.displayName = "ProductsGrid";
 
 export default ProductsGrid;
