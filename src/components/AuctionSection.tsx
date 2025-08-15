@@ -1,4 +1,5 @@
 
+import { useNavigate } from "react-router-dom";
 import { Clock, Gavel, Crown, TrendingUp } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -39,6 +40,7 @@ const auctionItems = [
 ];
 
 const AuctionSection = () => {
+  const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState<{[key: string]: string}>({});
 
   useEffect(() => {
@@ -145,7 +147,10 @@ const AuctionSection = () => {
                     <p className="text-amber-200 text-sm font-medium">{item.estimatedValue}</p>
                   </div>
 
-                  <button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-bold py-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 font-playfair tracking-wide">
+                  <button 
+                    className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-bold py-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 font-playfair tracking-wide"
+                    onClick={() => navigate("/auctions")}
+                  >
                     BID NOW
                   </button>
                 </div>

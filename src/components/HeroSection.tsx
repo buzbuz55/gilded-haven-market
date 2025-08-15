@@ -1,7 +1,9 @@
 
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative py-20 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -47,6 +49,7 @@ const HeroSection = () => {
                   <Button 
                     size="lg" 
                     className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-semibold px-10 py-4 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                    onClick={() => navigate("/consignment")}
                   >
                     CONSIGN WITH LUXE
                   </Button>
@@ -54,6 +57,7 @@ const HeroSection = () => {
                     variant="outline"
                     size="lg" 
                     className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-md font-semibold px-10 py-4 text-lg rounded-full transition-all duration-300 hover:border-amber-400"
+                    onClick={() => navigate("/collections")}
                   >
                     DISCOVER RARITIES
                   </Button>

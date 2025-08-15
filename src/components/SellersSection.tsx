@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import { TrendingUp, Shield, DollarSign, Clock, Users, Star } from "lucide-react";
 
 const sellingPoints = [
@@ -42,6 +43,7 @@ const sellingPoints = [
 ];
 
 const SellersSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-amber-50 via-white to-blue-50">
       <div className="max-w-7xl mx-auto">
@@ -57,6 +59,7 @@ const SellersSection = () => {
             <Button 
               size="lg" 
               className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 text-lg font-medium"
+              onClick={() => navigate("/consignment")}
             >
               CONSIGN WITH LUXE
             </Button>
@@ -64,6 +67,7 @@ const SellersSection = () => {
               variant="outline" 
               size="lg"
               className="border-gray-400 hover:border-gray-600 px-8 py-4 text-lg font-medium"
+              onClick={() => navigate("/consignment")}
             >
               FREE ESTIMATION
             </Button>

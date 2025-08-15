@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const trustFeatures = [
   "Authenticity Guarantee",
@@ -11,6 +12,7 @@ const trustFeatures = [
 ];
 
 const TrustSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-green-50">
       <div className="max-w-4xl mx-auto text-center">
@@ -38,6 +40,7 @@ const TrustSection = () => {
           variant="outline" 
           size="lg"
           className="border-gray-300 hover:border-gray-400 font-medium px-8"
+          onClick={() => navigate("/about")}
         >
           LEARN MORE
         </Button>

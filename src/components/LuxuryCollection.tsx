@@ -1,4 +1,5 @@
 
+import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
 
 const luxuryCollectionItems = [
@@ -41,6 +42,7 @@ const luxuryCollectionItems = [
 ];
 
 const LuxuryCollection = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-20 px-4 bg-gradient-to-r from-gray-900 via-black to-gray-900">
       <div className="max-w-7xl mx-auto">
@@ -68,7 +70,10 @@ const LuxuryCollection = () => {
         </div>
         
         <div className="text-center">
-          <button className="group bg-gradient-to-r from-amber-500 to-orange-500 text-black px-12 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
+          <button 
+            className="group bg-gradient-to-r from-amber-500 to-orange-500 text-black px-12 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden"
+            onClick={() => navigate("/collections")}
+          >
             <span className="relative z-10 font-playfair tracking-wide">Discover Unique Pieces</span>
             <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>

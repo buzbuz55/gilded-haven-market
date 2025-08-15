@@ -16,6 +16,10 @@ const Payment = lazy(() => import("./pages/Payment"));
 const Messages = lazy(() => import("./pages/Messages"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Categories = lazy(() => import("./pages/Categories"));
+const Collections = lazy(() => import("./pages/Collections"));
+const Auctions = lazy(() => import("./pages/Auctions"));
+const Consignment = lazy(() => import("./pages/Consignment"));
+const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -45,6 +49,11 @@ const App = () => (
               <Route path="/messages" element={<Messages />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/categories" element={<Categories />} />
+              <Route path="/collections" element={<Collections />} />
+              <Route path="/auctions" element={<Auctions />} />
+              <Route path="/auction/:id" element={<Auctions />} />
+              <Route path="/consignment" element={<Consignment />} />
+              <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
