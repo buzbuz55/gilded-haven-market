@@ -109,7 +109,7 @@ const ProductCard = memo(({
         {showOfferChat && (
           <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-lg rounded-2xl p-4 shadow-2xl border border-amber-200/50 z-20 animate-fade-in">
             <p className="offer-chat text-gray-800 mb-3 sexy-text-shadow">
-              "Faites-nous une offre digne de cette pièce d'exception..."
+              "Make us an offer worthy of this exceptional piece..."
             </p>
             <div className="flex space-x-2">
               <input 
@@ -167,7 +167,7 @@ const ProductCard = memo(({
           <div className="flex items-center justify-between text-xs text-gray-500">
             <span className="flex items-center serif-luxury">
               <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-              Authentifié
+              Authenticated
             </span>
             <span className="serif-luxury">Livraison VIP</span>
           </div>

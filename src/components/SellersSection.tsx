@@ -7,13 +7,13 @@ const sellingPoints = [
     icon: DollarSign,
     title: "Exceptional Valuations",
     description: "Receive up to 90% of market value through our exclusive Maison Royale consignment program",
-    highlight: "Jusqu'à 90%"
+    highlight: "Up to 90%"
   },
   {
     icon: Shield,
     title: "Château-Level Security",
     description: "Complete provenance documentation and white-glove insurance for every precious artifact",
-    highlight: "Sécurité Totale"
+    highlight: "Total Security"
   },
   {
     icon: Clock,
@@ -35,7 +35,7 @@ const sellingPoints = [
   },
   {
     icon: Star,
-    title: "Service Impérial",
+    title: "Imperial Service",
     description: "Personal concierge accompanies you through every step of your royal consignment journey",
     highlight: "Concierge VIP"
   }
@@ -58,14 +58,14 @@ const SellersSection = () => {
               size="lg" 
               className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 text-lg font-medium"
             >
-              CONSIGN À LA LUXE
+              CONSIGN WITH LUXE
             </Button>
             <Button 
               variant="outline" 
               size="lg"
               className="border-gray-400 hover:border-gray-600 px-8 py-4 text-lg font-medium"
             >
-              ESTIMATION GRATUITE
+              FREE ESTIMATION
             </Button>
           </div>
         </div>
@@ -94,15 +94,15 @@ const SellersSection = () => {
         <div className="bg-white rounded-3xl p-12 shadow-lg">
           <div className="text-center mb-12">
             <h3 className="font-playfair text-3xl font-bold text-gray-900 mb-4">
-              Histoires de Succès Royales
+              Royal Success Stories
             </h3>
-            <p className="text-gray-600 text-lg">Véritables consignataires, résultats extraordinaires</p>
+            <p className="text-gray-600 text-lg">Real consigners, extraordinary results</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-green-600 mb-2">€47,500</div>
-              <p className="text-gray-600 mb-4">Hermès Birkin vendu en 24 heures</p>
+              <p className="text-gray-600 mb-4">Hermès Birkin sold in 24 hours</p>
               <div className="flex justify-center text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
@@ -111,7 +111,7 @@ const SellersSection = () => {
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-green-600 mb-2">€23,800</div>
-              <p className="text-gray-600 mb-4">Collection Rolex vintage</p>
+              <p className="text-gray-600 mb-4">Vintage Rolex collection</p>
               <div className="flex justify-center text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
@@ -120,7 +120,7 @@ const SellersSection = () => {
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-green-600 mb-2">€15,200</div>
-              <p className="text-gray-600 mb-4">Œuvre d'art contemporaine</p>
+              <p className="text-gray-600 mb-4">Contemporary artwork</p>
               <div className="flex justify-center text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />

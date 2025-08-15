@@ -5,33 +5,33 @@ const collections = [
   {
     id: "haute-joaillerie",
     title: "Haute Joaillerie",
-    description: "Pièces exceptionnelles de diamants et pierres précieuses",
+    description: "Exceptional diamond and precious stone pieces",
     icon: Gem,
-    itemCount: "127 pièces",
+    itemCount: "127 pieces",
     gradient: "from-amber-400 to-orange-500"
   },
   {
     id: "horlogerie",
-    title: "Horlogerie d'Exception",
-    description: "Montres de luxe et complications horlogères",
+    title: "Exceptional Watchmaking",
+    description: "Luxury watches and horological complications",
     icon: Watch,
-    itemCount: "89 pièces",
+    itemCount: "89 pieces",
     gradient: "from-blue-400 to-indigo-500"
   },
   {
     id: "maroquinerie",
-    title: "Maroquinerie de Luxe",
-    description: "Sacs et accessoires des plus grandes maisons",
+    title: "Luxury Leather Goods",
+    description: "Bags and accessories from the greatest fashion houses",
     icon: ShoppingBag,
-    itemCount: "156 pièces",
+    itemCount: "156 pieces",
     gradient: "from-emerald-400 to-green-500"
   },
   {
     id: "objets-art",
-    title: "Objets d'Art",
-    description: "Créations artistiques et pièces de collection",
+    title: "Art Objects",
+    description: "Artistic creations and collectible pieces",
     icon: Crown,
-    itemCount: "73 pièces",
+    itemCount: "73 pieces",
     gradient: "from-purple-400 to-pink-500"
   }
 ];
@@ -45,10 +45,10 @@ const CollectionsOverview = () => {
             <div className="h-px w-16 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto mb-4"></div>
           </div>
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Nos Collections d'Exception
+            Our Exceptional Collections
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Explorez nos univers de luxe soigneusement sélectionnés par nos experts
+            Explore our luxury universes carefully selected by our experts
           </p>
         </div>
 

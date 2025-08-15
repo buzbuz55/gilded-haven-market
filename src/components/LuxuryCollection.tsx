@@ -49,11 +49,11 @@ const LuxuryCollection = () => {
             <div className="h-px w-20 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto mb-4"></div>
           </div>
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Pièces d'Exception
+            Exceptional Pieces
           </h2>
           <p className="text-amber-100 text-xl max-w-3xl mx-auto font-light leading-relaxed">
-            Les trésors les plus rares de nos ateliers partenaires, 
-            réservés aux collectionneurs les plus exigeants de la noblesse mondiale
+            The rarest treasures from our partner workshops, 
+            reserved for the most discerning collectors of the world's nobility
           </p>
         </div>
         
@@ -69,7 +69,7 @@ const LuxuryCollection = () => {
         
         <div className="text-center">
           <button className="group bg-gradient-to-r from-amber-500 to-orange-500 text-black px-12 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
-            <span className="relative z-10 font-playfair tracking-wide">Découvrir les Pièces Uniques</span>
+            <span className="relative z-10 font-playfair tracking-wide">Discover Unique Pieces</span>
             <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </div>

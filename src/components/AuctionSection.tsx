@@ -69,15 +69,15 @@ const AuctionSection = () => {
           </div>
           
           <h2 className="font-playfair text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            Ventes aux Enchères
+            Luxury Auctions
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-4xl md:text-5xl">
               Exclusives
             </span>
           </h2>
           
           <p className="text-amber-100 text-xl max-w-3xl mx-auto font-light leading-relaxed">
-            Participez aux enchères les plus prestigieuses du monde. 
-            Pièces uniques provenant des plus grandes collections privées.
+            Participate in the world's most prestigious auctions. 
+            Unique pieces from the greatest private collections.
           </p>
         </div>
 
@@ -99,7 +99,7 @@ const AuctionSection = () => {
                 <div className="absolute top-4 left-4">
                   <div className="flex items-center space-x-2 bg-red-600/90 backdrop-blur-md px-3 py-1 rounded-full">
                     <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                    <span className="text-white text-xs font-medium">ENCHÈRE LIVE</span>
+                    <span className="text-white text-xs font-medium">LIVE AUCTION</span>
                   </div>
                 </div>
 
@@ -128,11 +128,11 @@ const AuctionSection = () => {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-gray-400 text-xs mb-1">Enchère Actuelle</p>
+                      <p className="text-gray-400 text-xs mb-1">Current Bid</p>
                       <p className="text-white font-playfair text-2xl font-bold">{item.currentBid}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-gray-400 text-xs mb-1">Enchérisseurs</p>
+                      <p className="text-gray-400 text-xs mb-1">Bidders</p>
                       <div className="flex items-center space-x-1">
                         <TrendingUp className="w-4 h-4 text-green-400" />
                         <span className="text-green-400 font-semibold">{item.bidders}</span>
@@ -146,7 +146,7 @@ const AuctionSection = () => {
                   </div>
 
                   <button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-bold py-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 font-playfair tracking-wide">
-                    ENCHÉRIR MAINTENANT
+                    BID NOW
                   </button>
                 </div>
               </div>
@@ -159,10 +159,10 @@ const AuctionSection = () => {
           <div className="inline-block bg-gradient-to-r from-amber-500/10 to-orange-500/10 backdrop-blur-xl rounded-2xl p-8 border border-amber-400/20">
             <Crown className="w-12 h-12 text-amber-400 mx-auto mb-4" />
             <h3 className="font-playfair text-2xl font-bold text-white mb-4">
-              Rejoignez l'Élite des Collectionneurs
+              Join the Elite of Collectors
             </h3>
             <p className="text-amber-100 mb-6 max-w-md mx-auto">
-              Accédez aux ventes privées et aux enchères les plus exclusives réservées à notre clientèle prestigieuse.
+              Access private sales and the most exclusive auctions reserved for our prestigious clientele.
             </p>
             <button className="bg-gradient-to-r from-gray-800 to-black text-white px-8 py-3 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 border border-amber-400/30 hover:border-amber-400">
               <span className="font-playfair tracking-wide">DEVENIR MEMBRE VIP</span>
