@@ -98,83 +98,37 @@ const subcategoriesData = {
   ]
 };
 
-// Sample product data for paintings
-const paintingsProducts = [
-  {
-    id: "1",
-    title: "Basilica di Santa Ma...",
-    artist: "Allegre Raymond",
-    price: 4780,
-    image: "/placeholder.svg"
-  },
-  {
-    id: "2",
-    title: "Owl Tawny & Egg Bla...",
-    artist: "Dani Humberstone",
-    price: 442,
-    image: "/placeholder.svg"
-  },
-  {
-    id: "3",
-    title: "Still Life and Hunting...",
-    artist: "P. M. Guillemain",
-    price: 18500,
-    image: "/placeholder.svg"
-  },
-  {
-    id: "4",
-    title: "Airplane in landscap...",
-    artist: "Jeroen Allart",
-    price: 6000,
-    image: "/placeholder.svg"
-  },
-  {
-    id: "5",
-    title: "Circle of Duncan Gra...",
-    artist: "Duncan Grant",
-    price: 858,
-    originalPrice: 1073,
-    image: "/placeholder.svg",
-    isOnSale: true
-  },
-  {
-    id: "6",
-    title: "Tombs of the Sultans...",
-    artist: "Frank Dillon",
-    price: 41452,
-    image: "/placeholder.svg"
-  },
-  {
-    id: "7",
-    title: "Awakening - Importa...",
-    artist: "Herbert James Draper",
-    price: 102420,
-    image: "/placeholder.svg"
-  },
-  {
-    id: "8",
-    title: "News from the Front -...",
-    artist: "Frederick Goodall R.A.",
-    price: 26227,
-    image: "/placeholder.svg"
-  },
-  {
-    id: "9",
-    title: "Highland Stag",
-    artist: "Charles Landseer RA",
-    price: 2214,
-    image: "/placeholder.svg"
-  },
-  {
-    id: "10",
-    title: "Green Landscape",
-    artist: "DeJun Chen",
-    price: 780,
-    originalPrice: 1200,
-    image: "/placeholder.svg",
-    isOnSale: true
-  }
-];
+// Import actual product data
+import { 
+  hauteJoaillerieProducts,
+  horlogerieProducts, 
+  maroquinerieProducts,
+  objetsArtProducts,
+  mobilierProducts 
+} from "@/data/trendingProductsData";
+
+// Map products by category with proper format conversion
+const convertToProductFormat = (products: any[]) => {
+  return products.map(p => ({
+    id: p.id,
+    title: p.title,
+    artist: p.brand || "Unknown Artist",
+    price: parseFloat(p.price.replace(/[€$,]/g, '')),
+    originalPrice: p.originalPrice ? parseFloat(p.originalPrice.replace(/[€$,]/g, '')) : undefined,
+    image: p.image,
+    isOnSale: p.isSale || false
+  }));
+};
+
+const productsByCategory = {
+  "JEWELRY & WATCHES": convertToProductFormat([...hauteJoaillerieProducts, ...horlogerieProducts]),
+  "FASHION": convertToProductFormat(maroquinerieProducts),
+  "ART": convertToProductFormat(objetsArtProducts),
+  "FURNITURE": convertToProductFormat(mobilierProducts),
+  "SALE": convertToProductFormat([...hauteJoaillerieProducts, ...horlogerieProducts, ...maroquinerieProducts].filter(p => p.isSale)),
+  "CREATORS": convertToProductFormat([...hauteJoaillerieProducts, ...horlogerieProducts, ...maroquinerieProducts, ...objetsArtProducts, ...mobilierProducts]),
+  "ICONIC DESIGNS": convertToProductFormat([...hauteJoaillerieProducts, ...horlogerieProducts].filter(p => p.isNew))
+};
 
 // Sample recently viewed products
 const recentlyViewedProducts = [
@@ -227,12 +181,13 @@ const Categories = () => {
 
   // If a subcategory is selected, show product listing
   if (selectedSubcategory && selectedCategory) {
+    const categoryProducts = productsByCategory[selectedCategory as keyof typeof productsByCategory] || [];
     return (
       <>
         <ProductListing
           categoryName={selectedCategory}
           subcategoryName={selectedSubcategory}
-          products={paintingsProducts}
+          products={categoryProducts}
           onBack={handleBackToSubcategories}
         />
         <MobileNavigation />
