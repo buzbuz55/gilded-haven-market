@@ -5,7 +5,22 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ShoppingCartProvider } from "@/contexts/ShoppingCartContext";
-import { lazy, Suspense } from "react";
+import { lazy as reactLazy, Suspense, ComponentType } from "react";
+
+// Retry failed page loads once by reloading (fixes "Importing a module script failed" after updates)
+const lazy = <T extends ComponentType<any>>(load: () => Promise<{ default: T }>) =>
+  reactLazy(() =>
+    load().catch((err) => {
+      const key = "luxe-chunk-reload";
+      if (!sessionStorage.getItem(key)) {
+        sessionStorage.setItem(key, "1");
+        window.location.reload();
+        return new Promise<{ default: T }>(() => {});
+      }
+      sessionStorage.removeItem(key);
+      throw err;
+    })
+  );
 
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));
