@@ -1,3 +1,4 @@
+import InvestJoinSection from "@/components/InvestJoinSection";
 
 import { memo, lazy, Suspense } from "react";
 import Header from "@/components/Header";
@@ -94,6 +95,8 @@ const Index = memo(() => {
           <TrustSection />
         </LazyComponent>
         
+        <InvestJoinSection />
+
         <LazyComponent>
           <NewsletterSection />
         </LazyComponent>

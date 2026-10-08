@@ -1,5 +1,6 @@
 
 import { ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   {
@@ -35,9 +36,9 @@ const categories = [
 ];
 
 const CategoryGrid = () => {
+  const navigate = useNavigate();
   const handleCategoryClick = (categoryName: string) => {
-    console.log(`Navigating to ${categoryName} category`);
-    // Navigation logic will be implemented here
+    navigate(`/categories?category=${encodeURIComponent(categoryName)}`);
   };
 
   return (
