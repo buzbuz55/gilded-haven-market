@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Heart, Share2, ArrowLeft, ChevronRight, Star, Info, Shield, Truck, RotateCcw, Crown, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { paintingsProducts } from "@/data/products/paintings";
+import { paintingDetails } from "@/data/products/paintingDetails";
 
 const sampleProducts = [
   {
@@ -56,14 +58,33 @@ const ProductDetail = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   
-  const product = sampleProducts.find(p => p.id === id) || sampleProducts[0];
+  const painting = paintingsProducts.find(p => p.id === id);
+  const pd = painting ? paintingDetails[painting.id] : undefined;
+  const product = painting && pd
+    ? {
+        ...sampleProducts[0],
+        id: painting.id,
+        title: painting.title,
+        price: Number(painting.price.replace(/[^0-9.]/g, "")),
+        image: painting.image,
+        brand: painting.brand,
+        category: "Paintings",
+        seller: painting.brand,
+        sellerLocation: "Artist studio",
+        description: `${pd.description}\n\nOriginal, one-of-a-kind work by ${painting.brand}, ${pd.year}.\n\n${pd.certificate}.`,
+        condition: pd.condition,
+        provenance: pd.provenance,
+        materials: pd.materials,
+        dimensions: pd.dimensions,
+      }
+    : sampleProducts.find(p => p.id === id) || sampleProducts[0];
   const images = [product.image, product.image, product.image]; // Multiple angles
 
   const handleBack = () => {
     navigate(-1);
   };
 
-  const formatPrice = (price: number) => `€${price.toLocaleString()}`;
+  const formatPrice = (price: number) => painting ? `$${price.toLocaleString()}` : `€${price.toLocaleString()}`;
 
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
@@ -255,28 +276,32 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* Technical Details */}
+          {/* Provenance & Details */}
           <div className="space-y-4 mb-8">
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="font-playfair text-lg font-bold text-gray-900 mb-4">CARACTÉRISTIQUES</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Matériaux</span>
-                  <span className="text-gray-900 font-medium">{product.materials}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Dimensions</span>
-                  <span className="text-gray-900 font-medium">{product.dimensions}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Provenance</span>
-                  <span className="text-gray-900 font-medium">Collection Privée</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">État</span>
-                  <span className="text-emerald-600 font-medium">{product.condition}</span>
-                </div>
-              </div>
+            <div className="border-t border-border pt-6">
+              <h3 className="font-playfair text-lg font-bold text-foreground mb-4">PROVENANCE & DETAILS</h3>
+              <dl className="divide-y divide-border text-sm">
+                {[
+                  ["Materials", product.materials],
+                  ["Dimensions", product.dimensions],
+                  ["Condition", product.condition],
+                  ["Provenance", product.provenance],
+                  ...(pd ? [["Year", pd.year], ["Certificate", pd.certificate]] : []),
+                ].map(([label, value]) => (
+                  <div key={label} className="flex gap-4 py-3">
+                    <dt className="w-28 shrink-0 text-muted-foreground">{label}</dt>
+                    <dd className="flex-1 text-foreground font-medium">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+              {pd && (
+                <button
+                  onClick={() => navigate("/art-advisor")}
+                  className="mt-4 w-full text-sm py-3 rounded-xl border border-border hover:bg-muted font-medium"
+                >
+                  Not quite right? Ask the Art Advisor
+                </button>
+              )}
             </div>
           </div>
 
