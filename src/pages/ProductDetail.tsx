@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { paintingsProducts } from "@/data/products/paintings";
 import { paintingDetails } from "@/data/products/paintingDetails";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { StripeEmbeddedCheckout } from "@/components/StripeEmbeddedCheckout";
+import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
 
 const sampleProducts = [
   {
@@ -57,6 +60,7 @@ const ProductDetail = () => {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
   
   const painting = paintingsProducts.find(p => p.id === id);
   const pd = painting ? paintingDetails[painting.id] : undefined;
@@ -93,6 +97,7 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-amber-50/20">
       {/* Luxury Header */}
+      {painting && <PaymentTestModeBanner />}
       <header className="bg-gradient-to-r from-gray-900 via-black to-gray-900 border-b border-amber-400/20 sticky top-0 z-50 backdrop-blur-xl">
         <div className="max-w-md mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -186,15 +191,35 @@ const ProductDetail = () => {
 
             {/* Premium Purchase Section */}
             <div className="space-y-4 mb-6">
-              <Button className="w-full bg-gradient-to-r from-gray-900 via-black to-gray-900 hover:from-gray-800 hover:via-gray-900 hover:to-gray-800 text-white py-4 text-lg font-playfair tracking-wide relative overflow-hidden group">
-                <span className="relative z-10">ACQUÉRIR CETTE PIÈCE</span>
+              <Button
+                onClick={() => painting ? setCheckoutOpen(true) : navigate("/payment")}
+                className="w-full bg-gradient-to-r from-gray-900 via-black to-gray-900 hover:from-gray-800 hover:via-gray-900 hover:to-gray-800 text-white py-4 text-lg font-playfair tracking-wide relative overflow-hidden group"
+              >
+                <span className="relative z-10">{painting ? `BUY NOW — ${formatPrice(product.price)}` : "ACQUIRE THIS PIECE"}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Button>
+              {painting && (
+                <p className="text-xs text-center text-muted-foreground">
+                  Secure card payment · Tax calculated at checkout · Insured delivery
+                </p>
+              )}
 
-              <Button variant="outline" className="w-full py-4 text-lg font-playfair border-2 border-gray-300 hover:border-amber-400 hover:text-amber-600">
-                DEMANDER UNE EXPERTISE
+              <Button onClick={() => navigate("/messages")} variant="outline" className="w-full py-4 text-lg font-playfair border-2 border-gray-300 hover:border-amber-400 hover:text-amber-600">
+                ASK A QUESTION
               </Button>
             </div>
+
+            <Dialog open={checkoutOpen} onOpenChange={setCheckoutOpen}>
+              <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto p-0">
+                <DialogTitle className="sr-only">Checkout</DialogTitle>
+                {checkoutOpen && painting && (
+                  <StripeEmbeddedCheckout
+                    priceId={`painting_${painting.id}_price`}
+                    returnUrl={`${window.location.origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`}
+                  />
+                )}
+              </DialogContent>
+            </Dialog>
 
             {/* Luxury Services */}
             <div className="grid grid-cols-1 gap-3 mb-6">
