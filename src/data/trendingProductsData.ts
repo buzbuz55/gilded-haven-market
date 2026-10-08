@@ -4,8 +4,10 @@ import { horlogerieProducts } from './products/horlogerie';
 import { maroquinerieProducts } from './products/maroquinerie';
 import { objetsArtProducts } from './products/objetsArt';
 import { mobilierProducts } from './products/mobilier';
+import { paintingsProducts } from './products/paintings';
 
 export const trendingProducts = [
+  ...paintingsProducts,
   ...objetsArtProducts,
   ...hauteJoaillerieProducts,
   ...horlogerieProducts,
@@ -19,5 +21,6 @@ export {
   horlogerieProducts,
   maroquinerieProducts,
   objetsArtProducts,
-  mobilierProducts
+  mobilierProducts,
+  paintingsProducts
 };
