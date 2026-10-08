@@ -104,7 +104,8 @@ import {
   horlogerieProducts, 
   maroquinerieProducts,
   objetsArtProducts,
-  mobilierProducts 
+  mobilierProducts,
+  paintingsProducts
 } from "@/data/trendingProductsData";
 
 // Map products by category with proper format conversion
