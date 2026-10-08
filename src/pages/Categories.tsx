@@ -228,6 +228,16 @@ const Categories = () => {
           />
         </div>
 
+        <a
+          href="/art-advisor"
+          className="block mb-8 p-5 rounded-2xl bg-primary text-primary-foreground hover:opacity-90 transition"
+        >
+          <p className="text-xs tracking-[0.2em] uppercase opacity-80">AI-powered</p>
+          <p className="font-playfair text-xl font-semibold mt-1">Art Advisor</p>
+          <p className="text-sm opacity-80 mt-1">Describe your style, colors or room — we'll match you with a painting.</p>
+        </a>
+
+
         {/* Categories List */}
         <div className="space-y-1 mb-12">
           {filteredCategories.map((category, index) => (
