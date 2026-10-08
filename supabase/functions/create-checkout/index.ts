@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
     const productId = typeof stripePrice.product === "string" ? stripePrice.product : stripePrice.product.id;
     const product = await stripe.products.retrieve(productId);
 
-    const session = await stripe.checkout.sessions.create({
+    const params: Record<string, unknown> = {
       line_items: [{ price: stripePrice.id, quantity: 1 }],
       mode: "payment",
       ui_mode: "embedded_page",
@@ -32,7 +32,18 @@ Deno.serve(async (req) => {
       payment_intent_data: { description: product.name },
       metadata: { priceId, managed_payments: "false" },
       ...(typeof customerEmail === "string" && customerEmail.includes("@") ? { customer_email: customerEmail } : {}),
-    });
+    };
+    let session;
+    try {
+      session = await stripe.checkout.sessions.create(params as any);
+    } catch (err) {
+      // Tax needs a business address on the payments account; until that's set, check out without tax.
+      if (err instanceof Error && /automatic tax|head office address/i.test(err.message)) {
+        console.warn("Automatic tax unavailable, continuing without it:", err.message);
+        const { automatic_tax: _t, ...rest } = params;
+        session = await stripe.checkout.sessions.create(rest as any);
+      } else throw err;
+    }
     return json({ clientSecret: session.client_secret });
   } catch (e) {
     console.error(e);
