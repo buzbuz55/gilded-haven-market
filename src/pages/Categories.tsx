@@ -124,7 +124,7 @@ const convertToProductFormat = (products: any[]) => {
 const productsByCategory = {
   "JEWELRY & WATCHES": convertToProductFormat([...hauteJoaillerieProducts, ...horlogerieProducts]),
   "FASHION": convertToProductFormat(maroquinerieProducts),
-  "ART": convertToProductFormat(objetsArtProducts),
+  "ART": convertToProductFormat([...paintingsProducts, ...objetsArtProducts]),
   "FURNITURE": convertToProductFormat(mobilierProducts),
   "SALE": convertToProductFormat([...hauteJoaillerieProducts, ...horlogerieProducts, ...maroquinerieProducts].filter(p => p.isSale)),
   "CREATORS": convertToProductFormat([...hauteJoaillerieProducts, ...horlogerieProducts, ...maroquinerieProducts, ...objetsArtProducts, ...mobilierProducts]),
