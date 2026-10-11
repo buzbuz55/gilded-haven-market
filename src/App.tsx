@@ -44,6 +44,9 @@ const Sell = lazy(() => import("./pages/Sell"));
 const Journal = lazy(() => import("./pages/Journal"));
 const JournalPost = lazy(() => import("./pages/JournalPost"));
 const CheckoutReturn = lazy(() => import("./pages/CheckoutReturn"));
+const Examine = lazy(() => import("./pages/Examine"));
+const Account = lazy(() => import("./pages/Account"));
+import LangGate, { PAGE_LANGS } from "@/components/LangGate";
 
 const queryClient = new QueryClient();
 
@@ -96,6 +99,33 @@ const App = () => (
               <Route path="/sell" element={<Sell />} />
               <Route path="/journal" element={<Journal />} />
               <Route path="/journal/:slug" element={<JournalPost />} />
+              <Route path="/examine" element={<Examine />} />
+              <Route path="/account" element={<Account />} />
+              {PAGE_LANGS.map((l) => (
+                <Route key={l} path={`/${l}/*`} element={<LangGate lang={l} />}>
+              <Route index element={<Index />} />
+              <Route path="product/:id" element={<ProductDetail />} />
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="payment" element={<Payment />} />
+              <Route path="messages" element={<Messages />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="categories" element={<Categories />} />
+              <Route path="collections" element={<Collections />} />
+              <Route path="auctions" element={<Auctions />} />
+              <Route path="auction/:id" element={<Auctions />} />
+              <Route path="consignment" element={<Consignment />} />
+              <Route path="about" element={<About />} />
+              <Route path="privacy" element={<Privacy />} />
+              <Route path="art-advisor" element={<ArtAdvisor />} />
+              <Route path="checkout/return" element={<CheckoutReturn />} />
+              <Route path="sell" element={<Sell />} />
+              <Route path="journal" element={<Journal />} />
+              <Route path="journal/:slug" element={<JournalPost />} />
+              <Route path="examine" element={<Examine />} />
+              <Route path="account" element={<Account />} />
+                </Route>
+              ))}
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
