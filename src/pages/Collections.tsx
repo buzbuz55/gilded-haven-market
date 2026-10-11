@@ -1,3 +1,4 @@
+import LiveListings from "@/components/LiveListings";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -60,6 +61,7 @@ const Collections = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50/30 via-white to-amber-50/20">
       <Header />
+      <LiveListings />
       
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center mb-12">
