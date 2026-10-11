@@ -7,8 +7,8 @@ const sellingPoints = [
   {
     icon: DollarSign,
     title: "Exceptional Valuations",
-    description: "Receive up to 90% of market value through our exclusive Maison Royale consignment program",
-    highlight: "Up to 90%"
+    description: "Bring us your jewelry — we examine it, price it and sell it. We keep only 10%; you receive 90% of the sale.",
+    highlight: "You keep 90%"
   },
   {
     icon: Shield,
