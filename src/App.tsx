@@ -38,6 +38,7 @@ const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ArtAdvisor = lazy(() => import("./pages/ArtAdvisor"));
+const Sell = lazy(() => import("./pages/Sell"));
 const Journal = lazy(() => import("./pages/Journal"));
 const JournalPost = lazy(() => import("./pages/JournalPost"));
 const CheckoutReturn = lazy(() => import("./pages/CheckoutReturn"));
@@ -76,6 +77,7 @@ const App = () => (
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/art-advisor" element={<ArtAdvisor />} />
               <Route path="/checkout/return" element={<CheckoutReturn />} />
+              <Route path="/sell" element={<Sell />} />
               <Route path="/journal" element={<Journal />} />
               <Route path="/journal/:slug" element={<JournalPost />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
