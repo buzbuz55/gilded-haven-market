@@ -44,13 +44,13 @@ const applyHead = (l: Lang) => {
 };
 
 // Page text is translated with Google's website translator.
-const setTranslateCookie = (code: string) => {
+export const setTranslateCookie = (code: string) => {
   const v = code === "en" ? "" : `/en/${code}`;
   const exp = code === "en" ? "; expires=Thu, 01 Jan 1970 00:00:00 GMT" : "";
   document.cookie = `googtrans=${v}; path=/${exp}`;
 };
 
-const loadTranslator = () => {
+export const loadTranslator = () => {
   if (document.getElementById("gt-script")) return;
   (window as any).googleTranslateElementInit = () => {
     new (window as any).google.translate.TranslateElement({ pageLanguage: "en", autoDisplay: false }, "gt-el");

@@ -1,3 +1,4 @@
+import { isSaved, toggleSaved } from "@/lib/saved";
 
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -56,7 +57,7 @@ const relatedProducts = [
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(() => isSaved(id ?? ""));
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -115,7 +116,7 @@ const ProductDetail = () => {
             
             <div className="flex items-center space-x-2">
               <button
-                onClick={() => setIsLiked(!isLiked)}
+                onClick={() => setIsLiked(toggleSaved(id ?? ""))}
                 className="p-3 hover:bg-white/10 rounded-full transition-all duration-300 group"
               >
                 <Heart className={`w-5 h-5 transition-colors ${isLiked ? 'fill-red-500 text-red-500' : 'text-white group-hover:text-amber-400'}`} />

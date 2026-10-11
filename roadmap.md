@@ -4,3 +4,8 @@
 - [x] Seller sign-up/log-in + Sell an item form saving real listings
 - [ ] Full multilingual pages — blocked: user to choose upgrade vs 5 languages
 - [ ] Local SEO + Google Business listing — blocked: need business name, address, phone, hours
+- [x] Examination screen (approve → live), owner claim
+- [x] 5 language page addresses (/es /fr /ar /zh-CN /hi) — more languages next
+- [x] Live listings on Collections
+- [x] Buyer dashboard: orders, saved paintings, contact
+- [ ] Real contact email — blocked: need owner's email (placeholder hello@luxe.com)

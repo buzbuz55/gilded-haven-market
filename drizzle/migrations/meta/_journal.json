@@ -8,6 +8,13 @@
       "when": 1791714104985,
       "tag": "0000_seller_profiles_listings",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791715079925,
+      "tag": "0001_examination_roles",
+      "breakpoints": true
     }
   ]
 }

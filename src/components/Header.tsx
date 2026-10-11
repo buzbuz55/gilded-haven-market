@@ -95,7 +95,7 @@ const Header = () => {
               variant="ghost" 
               size="icon" 
               className="hover:bg-gray-50"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/account")}
             >
               <User className="h-5 w-5" />
             </Button>
