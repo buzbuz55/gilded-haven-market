@@ -3,7 +3,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { ShoppingCartProvider } from "@/contexts/ShoppingCartContext";
 import { lazy as reactLazy, Suspense, ComponentType } from "react";
 
@@ -38,11 +40,25 @@ const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ArtAdvisor = lazy(() => import("./pages/ArtAdvisor"));
+const Sell = lazy(() => import("./pages/Sell"));
 const Journal = lazy(() => import("./pages/Journal"));
 const JournalPost = lazy(() => import("./pages/JournalPost"));
 const CheckoutReturn = lazy(() => import("./pages/CheckoutReturn"));
 
 const queryClient = new QueryClient();
+
+// After Google sign-in returns to the homepage, send the user where they were going.
+const PostLoginRedirect = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const { data } = supabase.auth.onAuthStateChange((_e, session) => {
+      const next = sessionStorage.getItem("luxe-next");
+      if (session && next) { sessionStorage.removeItem("luxe-next"); navigate(next); }
+    });
+    return () => data.subscription.unsubscribe();
+  }, [navigate]);
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -51,6 +67,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <PostLoginRedirect />
           <Suspense fallback={
             <div className="min-h-screen bg-background flex items-center justify-center">
               <div className="text-center">
@@ -76,6 +93,7 @@ const App = () => (
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/art-advisor" element={<ArtAdvisor />} />
               <Route path="/checkout/return" element={<CheckoutReturn />} />
+              <Route path="/sell" element={<Sell />} />
               <Route path="/journal" element={<Journal />} />
               <Route path="/journal/:slug" element={<JournalPost />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

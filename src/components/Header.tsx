@@ -61,6 +61,12 @@ const Header = () => {
             >
               Journal
             </button>
+            <button 
+              onClick={() => navigate("/sell")}
+              className="font-inter text-primary hover:text-gray-900 font-semibold transition-colors"
+            >
+              Sell an Item
+            </button>
           </nav>
 
           {/* Desktop Icons */}
