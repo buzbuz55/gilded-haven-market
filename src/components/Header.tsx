@@ -3,6 +3,7 @@ import { Search, Heart, Mail, User, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,10 +55,17 @@ const Header = () => {
             >
               Collections
             </button>
+            <button 
+              onClick={() => navigate("/journal")}
+              className="font-inter text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            >
+              Journal
+            </button>
           </nav>
 
           {/* Desktop Icons */}
           <div className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher />
             <Button variant="ghost" size="icon" className="hover:bg-gray-50">
               <Search className="h-5 w-5" />
             </Button>
