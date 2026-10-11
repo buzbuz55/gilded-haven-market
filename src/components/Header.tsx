@@ -96,7 +96,8 @@ const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher />
             <Button
               variant="ghost"
               size="icon"

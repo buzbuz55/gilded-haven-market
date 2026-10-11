@@ -162,3 +162,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #b8941f, #d4af37);
 }
+
+/* Hide Google Translate banner bar */
+.goog-te-banner-frame, .skiptranslate iframe { display: none !important; }
+body { top: 0 !important; }
