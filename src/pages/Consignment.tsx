@@ -1,251 +1,160 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { DollarSign, Shield, Clock, Users, Star, Upload, Check } from "lucide-react";
+import { Gem, Search, Tag, ShoppingBag, Banknote, Shield, Clock } from "lucide-react";
 import Header from "@/components/Header";
 import MobileNavigation from "@/components/MobileNavigation";
+import { toast } from "sonner";
 
-const consignmentSteps = [
-  {
-    icon: Upload,
-    title: "Submit Your Item",
-    description: "Upload photos and details of your luxury piece"
-  },
-  {
-    icon: Star,
-    title: "Expert Authentication",
-    description: "Our specialists verify authenticity and condition"
-  },
-  {
-    icon: DollarSign,
-    title: "Valuation & Listing",
-    description: "Receive professional appraisal and list for sale"
-  },
-  {
-    icon: Check,
-    title: "Get Paid",
-    description: "Receive up to 90% of the sale price within 48 hours"
-  }
+const COMMISSION = 0.1;
+const CONTACT_EMAIL = "hello@luxe.com";
+
+const steps = [
+  { icon: Gem, title: "1. Bring Your Piece", description: "Visit us or book an appointment with your jewelry." },
+  { icon: Search, title: "2. Expert Examination", description: "Our gemologists inspect, test and authenticate it." },
+  { icon: Tag, title: "3. We Set the Price", description: "You receive a fair market price based on our appraisal." },
+  { icon: ShoppingBag, title: "4. Listed for Sale", description: "We photograph and sell it to our collectors." },
+  { icon: Banknote, title: "5. You Get Paid", description: "When it sells, we keep 10% and you receive 90%." },
 ];
 
-const successStories = [
-  {
-    amount: "€47,500",
-    item: "Hermès Birkin sold in 24 hours",
-    rating: 5
-  },
-  {
-    amount: "€23,800", 
-    item: "Vintage Rolex collection",
-    rating: 5
-  },
-  {
-    amount: "€15,200",
-    item: "Contemporary artwork",
-    rating: 5
-  }
-];
+const fmt = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 
 const Consignment = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    itemType: "",
-    brand: "",
-    description: "",
-    condition: "",
-    purchasePrice: "",
-    email: "",
-    phone: ""
-  });
+  const [salePrice, setSalePrice] = useState("10000");
+  const [form, setForm] = useState({ itemType: "", brand: "", description: "", condition: "", name: "", email: "", phone: "" });
+  const price = Math.max(0, Number(salePrice.replace(/[^0-9.]/g, "")) || 0);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    alert("Thank you! We'll contact you within 24 hours for a free evaluation.");
-    navigate("/");
+    const body = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nItem: ${form.itemType}\nBrand: ${form.brand}\nCondition: ${form.condition}\n\n${form.description}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Consignment appointment request")}&body=${encodeURIComponent(body)}`;
+    toast.success("Thank you! We'll contact you within 24 hours to book your examination.");
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50/30 via-white to-blue-50/20">
-      <Header />
-      
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Transform Treasures into Fortune
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Join the most prestigious luxury consignment house, where extraordinary pieces meet their destined collectors. 
-            From authentication to swift payment, we orchestrate every detail with imperial precision.
-          </p>
-        </div>
+  const set = (k: keyof typeof form) => (v: string) => setForm({ ...form, [k]: v });
 
-        {/* How It Works */}
-        <div className="mb-16">
-          <h2 className="font-playfair text-3xl font-bold text-center mb-12">How Consignment Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {consignmentSteps.map((step, index) => (
-              <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <step.icon className="w-8 h-8 text-white" />
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main className="max-w-7xl mx-auto px-4 py-10 pb-24">
+        <section className="text-center mb-16">
+          <p className="text-sm tracking-[0.3em] text-primary mb-3">JEWELRY CONSIGNMENT</p>
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Bring Us Your Jewelry. We Sell It. You Keep 90%.
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            Our experts examine your piece, give you a price, and list it for sale. You pay nothing up front —
+            we only take a 10% commission when it sells.
+          </p>
+          <Button size="lg" onClick={() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth" })}>
+            Book a Free Examination
+          </Button>
+        </section>
+
+        <section className="mb-16">
+          <h2 className="font-playfair text-3xl font-bold text-center mb-10">How It Works</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {steps.map((s) => (
+              <Card key={s.title} className="p-6 text-center">
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <s.icon className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
-                <p className="text-gray-600 text-sm">{step.description}</p>
+                <h3 className="font-semibold mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground">{s.description}</p>
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Consignment Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
           <Card>
             <CardHeader>
-              <CardTitle className="font-playfair text-2xl">Get Free Evaluation</CardTitle>
-              <p className="text-gray-600">Tell us about your luxury item for a professional appraisal</p>
+              <CardTitle className="font-playfair text-2xl">What Will I Earn?</CardTitle>
+              <p className="text-muted-foreground">Enter a sale price to see your payout.</p>
             </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Label htmlFor="itemType">Item Type</Label>
-                  <Select value={formData.itemType} onValueChange={(value) => setFormData({...formData, itemType: value})}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select item type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="jewelry">Jewelry</SelectItem>
-                      <SelectItem value="watches">Watches</SelectItem>
-                      <SelectItem value="handbags">Handbags</SelectItem>
-                      <SelectItem value="art">Art</SelectItem>
-                      <SelectItem value="furniture">Furniture</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
+            <CardContent className="space-y-6">
+              <div>
+                <Label htmlFor="salePrice">Sale price (USD)</Label>
+                <Input id="salePrice" inputMode="numeric" value={salePrice} onChange={(e) => setSalePrice(e.target.value)} />
+              </div>
+              <div className="space-y-3 text-lg">
+                <div className="flex justify-between"><span>Sale price</span><span>{fmt(price)}</span></div>
+                <div className="flex justify-between text-muted-foreground"><span>LUXE commission (10%)</span><span>− {fmt(price * COMMISSION)}</span></div>
+                <div className="flex justify-between border-t border-border pt-3 font-bold text-xl">
+                  <span>You receive</span><span className="text-primary">{fmt(price * (1 - COMMISSION))}</span>
                 </div>
-
-                <div>
-                  <Label htmlFor="brand">Brand/Designer</Label>
-                  <Input 
-                    id="brand"
-                    value={formData.brand}
-                    onChange={(e) => setFormData({...formData, brand: e.target.value})}
-                    placeholder="e.g., Cartier, Hermès, Rolex"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="description">Description</Label>
-                  <Textarea 
-                    id="description"
-                    value={formData.description}
-                    onChange={(e) => setFormData({...formData, description: e.target.value})}
-                    placeholder="Detailed description of your item"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="condition">Condition</Label>
-                  <Select value={formData.condition} onValueChange={(value) => setFormData({...formData, condition: value})}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select condition" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="mint">Mint/New</SelectItem>
-                      <SelectItem value="excellent">Excellent</SelectItem>
-                      <SelectItem value="very-good">Very Good</SelectItem>
-                      <SelectItem value="good">Good</SelectItem>
-                      <SelectItem value="fair">Fair</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="purchasePrice">Original Purchase Price (Optional)</Label>
-                  <Input 
-                    id="purchasePrice"
-                    value={formData.purchasePrice}
-                    onChange={(e) => setFormData({...formData, purchasePrice: e.target.value})}
-                    placeholder="€0"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input 
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input 
-                    id="phone"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    required
-                  />
-                </div>
-
-                <Button type="submit" className="w-full bg-gray-900 hover:bg-gray-800 text-white py-3">
-                  GET FREE EVALUATION
-                </Button>
-              </form>
+              </div>
+              <div className="space-y-3 pt-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-3"><Shield className="w-5 h-5 text-primary" />Fully insured while in our care</div>
+                <div className="flex items-center gap-3"><Tag className="w-5 h-5 text-primary" />No fees unless your piece sells</div>
+                <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-primary" />Paid shortly after the sale</div>
+              </div>
             </CardContent>
           </Card>
 
-          {/* Success Stories */}
-          <div>
-            <h3 className="font-playfair text-2xl font-bold mb-6">Royal Success Stories</h3>
-            <p className="text-gray-600 mb-8">Real consigners, extraordinary results</p>
-            
-            <div className="space-y-6">
-              {successStories.map((story, index) => (
-                <Card key={index} className="p-6">
-                  <div className="text-3xl font-bold text-green-600 mb-2">{story.amount}</div>
-                  <p className="text-gray-600 mb-3">{story.item}</p>
-                  <div className="flex text-yellow-400">
-                    {[...Array(story.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
+          <Card id="book">
+            <CardHeader>
+              <CardTitle className="font-playfair text-2xl">Book Your Examination</CardTitle>
+              <p className="text-muted-foreground">Tell us about your piece and we'll set up a time.</p>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <Label>Item type</Label>
+                    <Select value={form.itemType} onValueChange={set("itemType")}>
+                      <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
+                      <SelectContent>
+                        {["Ring", "Necklace", "Bracelet", "Earrings", "Watch", "Brooch", "Other"].map((t) => (
+                          <SelectItem key={t} value={t}>{t}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
-                </Card>
-              ))}
-            </div>
-
-            {/* Benefits */}
-            <div className="mt-8 space-y-4">
-              <div className="flex items-center">
-                <Shield className="w-5 h-5 text-green-500 mr-3" />
-                <span>100% Secure & Insured</span>
-              </div>
-              <div className="flex items-center">
-                <DollarSign className="w-5 h-5 text-green-500 mr-3" />
-                <span>Up to 90% Commission</span>
-              </div>
-              <div className="flex items-center">
-                <Clock className="w-5 h-5 text-green-500 mr-3" />
-                <span>Payment in 48 Hours</span>
-              </div>
-              <div className="flex items-center">
-                <Users className="w-5 h-5 text-green-500 mr-3" />
-                <span>500K+ Global Collectors</span>
-              </div>
-            </div>
-          </div>
-        </div>
+                  <div>
+                    <Label>Condition</Label>
+                    <Select value={form.condition} onValueChange={set("condition")}>
+                      <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
+                      <SelectContent>
+                        {["Like new", "Excellent", "Good", "Needs repair"].map((t) => (
+                          <SelectItem key={t} value={t}>{t}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <div>
+                  <Label htmlFor="brand">Brand / maker</Label>
+                  <Input id="brand" maxLength={200} value={form.brand} onChange={(e) => set("brand")(e.target.value)} placeholder="e.g. Cartier, Tiffany, unknown" required />
+                </div>
+                <div>
+                  <Label htmlFor="desc">Description</Label>
+                  <Textarea id="desc" maxLength={2000} value={form.description} onChange={(e) => set("description")(e.target.value)} placeholder="Metal, stones, size, papers or receipts you have" required />
+                </div>
+                <div>
+                  <Label htmlFor="name">Full name</Label>
+                  <Input id="name" maxLength={200} value={form.name} onChange={(e) => set("name")(e.target.value)} required />
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" maxLength={255} value={form.email} onChange={(e) => set("email")(e.target.value)} required />
+                  </div>
+                  <div>
+                    <Label htmlFor="phone">Phone</Label>
+                    <Input id="phone" maxLength={50} value={form.phone} onChange={(e) => set("phone")(e.target.value)} required />
+                  </div>
+                </div>
+                <Button type="submit" className="w-full" size="lg">Request Appointment</Button>
+              </form>
+            </CardContent>
+          </Card>
+        </section>
       </main>
-
       <MobileNavigation />
     </div>
   );
