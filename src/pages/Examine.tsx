@@ -10,6 +10,37 @@ import { toast } from "sonner";
 
 type Row = { id: string; title: string; category: string; brand: string | null; description: string; condition: string | null; asking_price: number; status: string; image_path: string | null; url?: string };
 const usd = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+const KIND: Record<string, string> = { invest: "Investor", join: "Join the team", consign: "Consignment", contact: "Buyer message", career: "Job application", buy: "Buyer" };
+
+const Inbox = () => {
+  const [items, setItems] = useState<any[]>([]);
+  const [filter, setFilter] = useState("all");
+  useEffect(() => { supabase.from("inquiries").select("*").order("created_at", { ascending: false }).then(({ data }) => setItems(data ?? [])); }, []);
+  const openResume = async (p: string) => {
+    const { data } = await supabase.storage.from("resumes").createSignedUrl(p, 600);
+    if (data?.signedUrl) window.open(data.signedUrl, "_blank");
+  };
+  const shown = filter === "all" ? items : items.filter((i) => i.kind === filter);
+  return (
+    <div>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {["all", ...Object.keys(KIND)].map((k) => <Button key={k} size="sm" variant={filter === k ? "secondary" : "ghost"} onClick={() => setFilter(k)}>{k === "all" ? "All" : KIND[k]}</Button>)}
+      </div>
+      {shown.length === 0 && <p className="text-muted-foreground">No messages yet.</p>}
+      <div className="space-y-3">
+        {shown.map((i) => (
+          <Card key={i.id} className="p-4">
+            <div className="flex justify-between gap-2 text-sm text-muted-foreground"><span className="font-semibold text-foreground">{KIND[i.kind] ?? i.kind}</span><span>{new Date(i.created_at).toLocaleString()}</span></div>
+            <p className="font-medium mt-1">{i.name} · <a className="underline" href={`mailto:${i.email}`}>{i.email}</a>{i.phone ? ` · ${i.phone}` : ""}</p>
+            {Object.entries(i.details ?? {}).filter(([, v]) => v).map(([k, v]) => <p key={k} className="text-sm text-muted-foreground">{k}: {String(v)}</p>)}
+            {i.message && <p className="text-sm mt-2 whitespace-pre-line">{i.message}</p>}
+            {i.resume_path && <Button size="sm" variant="outline" className="mt-2" onClick={() => openResume(i.resume_path)}>Open resume</Button>}
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Examine = () => {
   const { user, loading } = useAuth();
@@ -24,6 +55,7 @@ const Examine = () => {
     setAdmin((data ?? []).length > 0);
   };
   const load = async () => {
+    if (tab === "inbox") return setRows([]);
     const { data } = await supabase.from("listings").select("*").eq("status", tab).order("created_at", { ascending: false });
     const r = (data ?? []) as Row[];
     await Promise.all(r.map(async (x) => { if (x.image_path) x.url = (await supabase.storage.from("listing-photos").createSignedUrl(x.image_path, 3600)).data?.signedUrl; }));
@@ -58,11 +90,11 @@ const Examine = () => {
         ) : (
           <>
             <div className="flex gap-2 mb-6">
-              {[["pending_review", "Waiting"], ["live", "For sale"], ["rejected", "Declined"], ["sold", "Sold"]].map(([v, l]) => (
+              {[["pending_review", "Waiting"], ["live", "For sale"], ["rejected", "Declined"], ["sold", "Sold"], ["inbox", "Inbox"]].map(([v, l]) => (
                 <Button key={v} variant={tab === v ? "default" : "outline"} size="sm" onClick={() => setTab(v)}>{l}</Button>
               ))}
             </div>
-            {rows.length === 0 && <p className="text-muted-foreground">Nothing here.</p>}
+            {tab === "inbox" ? <Inbox /> : rows.length === 0 && <p className="text-muted-foreground">Nothing here.</p>}
             <div className="space-y-4">
               {rows.map((r) => (
                 <Card key={r.id} className="p-4 grid gap-4 sm:grid-cols-[140px_1fr]">

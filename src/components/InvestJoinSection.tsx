@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { submitInquiry } from "@/lib/inquiries";
 
 type Mode = "invest" | "join" | null;
 
@@ -12,19 +13,18 @@ const InvestJoinSection = () => {
   const [mode, setMode] = useState<Mode>(null);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const submit = (e: React.FormEvent) => {
+  const [busy, setBusy] = useState(false);
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !/^\S+@\S+\.\S+$/.test(form.email)) {
-      toast.error("Please enter your name and a valid email.");
-      return;
-    }
-    const subject = mode === "invest" ? "Investment inquiry" : "Joining the LUXE team";
-    window.location.href = `mailto:hello@luxe.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    )}`;
-    toast.success("Thank you! Your email app will open to send your message.");
-    setMode(null);
-    setForm({ name: "", email: "", message: "" });
+    if (!mode) return;
+    setBusy(true);
+    try {
+      await submitInquiry(mode, form);
+      toast.success("Thank you! We've received your message and will be in touch.");
+      setMode(null);
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) { toast.error((err as Error).message); }
+    setBusy(false);
   };
 
   const cards = [
@@ -59,7 +59,8 @@ const InvestJoinSection = () => {
             <Input placeholder="Full name" maxLength={100} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
             <Input type="email" placeholder="Email" maxLength={255} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
             <Textarea placeholder={mode === "invest" ? "Investment interest (optional)" : "Your role and experience"} maxLength={1000} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
-            <Button type="submit" className="w-full">Send</Button>
+            <Button type="submit" className="w-full" disabled={busy}>{busy ? "Sending…" : "Send"}</Button>
+            {mode === "join" && <p className="text-sm text-center text-muted-foreground">Want to send a resume? <a href="/careers" className="underline">Apply on our Careers page</a></p>}
           </form>
         </DialogContent>
       </Dialog>

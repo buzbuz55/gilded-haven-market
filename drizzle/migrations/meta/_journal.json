@@ -15,6 +15,13 @@
       "when": 1791715079925,
       "tag": "0001_examination_roles",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791818265718,
+      "tag": "0002_create_inquiries",
+      "breakpoints": true
     }
   ]
 }

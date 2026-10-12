@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      inquiries: {
+        Row: {
+          created_at: string
+          details: Json
+          email: string
+          id: string
+          kind: string
+          message: string | null
+          name: string
+          phone: string | null
+          resume_path: string | null
+        }
+        Insert: {
+          created_at?: string
+          details?: Json
+          email: string
+          id?: string
+          kind: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          resume_path?: string | null
+        }
+        Update: {
+          created_at?: string
+          details?: Json
+          email?: string
+          id?: string
+          kind?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          resume_path?: string | null
+        }
+        Relationships: []
+      }
       listings: {
         Row: {
           asking_price: number
