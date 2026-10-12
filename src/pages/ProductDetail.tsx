@@ -1,6 +1,6 @@
 import { isSaved, toggleSaved } from "@/lib/saved";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Heart, Share2, ArrowLeft, ChevronRight, Star, Info, Shield, Truck, RotateCcw, Crown, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
