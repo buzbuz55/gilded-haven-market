@@ -61,6 +61,12 @@ const Header = () => {
             >
               Journal
             </button>
+            <button
+              onClick={() => navigate("/careers")}
+              className="font-inter text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            >
+              Careers
+            </button>
             <button 
               onClick={() => navigate("/sell")}
               className="font-inter text-primary hover:text-gray-900 font-semibold transition-colors"

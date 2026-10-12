@@ -36,6 +36,7 @@ const Categories = lazy(() => import("./pages/Categories"));
 const Collections = lazy(() => import("./pages/Collections"));
 const Auctions = lazy(() => import("./pages/Auctions"));
 const Consignment = lazy(() => import("./pages/Consignment"));
+const Careers = lazy(() => import("./pages/Careers"));
 const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -92,6 +93,7 @@ const App = () => (
               <Route path="/auctions" element={<Auctions />} />
               <Route path="/auction/:id" element={<Auctions />} />
               <Route path="/consignment" element={<Consignment />} />
+              <Route path="/careers" element={<Careers />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/art-advisor" element={<ArtAdvisor />} />
@@ -115,6 +117,7 @@ const App = () => (
               <Route path="auctions" element={<Auctions />} />
               <Route path="auction/:id" element={<Auctions />} />
               <Route path="consignment" element={<Consignment />} />
+              <Route path="careers" element={<Careers />} />
               <Route path="about" element={<About />} />
               <Route path="privacy" element={<Privacy />} />
               <Route path="art-advisor" element={<ArtAdvisor />} />

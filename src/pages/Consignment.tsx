@@ -9,9 +9,9 @@ import { Gem, Search, Tag, ShoppingBag, Banknote, Shield, Clock } from "lucide-r
 import Header from "@/components/Header";
 import MobileNavigation from "@/components/MobileNavigation";
 import { toast } from "sonner";
+import { submitInquiry } from "@/lib/inquiries";
 
 const COMMISSION = 0.1;
-const CONTACT_EMAIL = "hello@luxe.com";
 
 const steps = [
   { icon: Gem, title: "1. Bring Your Piece", description: "Visit us or book an appointment with your jewelry." },
@@ -28,11 +28,14 @@ const Consignment = () => {
   const [form, setForm] = useState({ itemType: "", brand: "", description: "", condition: "", name: "", email: "", phone: "" });
   const price = Math.max(0, Number(salePrice.replace(/[^0-9.]/g, "")) || 0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nItem: ${form.itemType}\nBrand: ${form.brand}\nCondition: ${form.condition}\n\n${form.description}`;
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Consignment appointment request")}&body=${encodeURIComponent(body)}`;
-    toast.success("Thank you! We'll contact you within 24 hours to book your examination.");
+    try {
+      await submitInquiry("consign", { name: form.name, email: form.email, phone: form.phone, message: form.description },
+        { itemType: form.itemType, brand: form.brand, condition: form.condition });
+      toast.success("Thank you! We'll contact you to book your examination.");
+      setForm({ itemType: "", brand: "", description: "", condition: "", name: "", email: "", phone: "" });
+    } catch (err) { toast.error((err as Error).message); }
   };
 
   const set = (k: keyof typeof form) => (v: string) => setForm({ ...form, [k]: v });

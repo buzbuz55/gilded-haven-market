@@ -10,8 +10,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { getSaved } from "@/lib/saved";
 import { paintingsProducts } from "@/data/products/paintings";
 
+import { submitInquiry } from "@/lib/inquiries";
+import { toast } from "sonner";
+
 type Order = { id: string; date: number; total: number; items: string[] };
-const CONTACT = "hello@luxe.com";
 
 const Account = () => {
   const { user, loading } = useAuth();
@@ -28,9 +30,12 @@ const Account = () => {
   if (loading) return null;
   if (!user) return <Navigate to="/login?next=/account" replace />;
 
-  const contact = () => {
-    const body = encodeURIComponent(`${msg}\n\nFrom: ${user.email}`);
-    window.location.href = `mailto:${CONTACT}?subject=${encodeURIComponent("Consignment question")}&body=${body}`;
+  const contact = async () => {
+    try {
+      await submitInquiry("contact", { name: user.user_metadata?.display_name || user.email!.split("@")[0], email: user.email!, message: msg });
+      toast.success("Message sent — we'll reply by email.");
+      setMsg("");
+    } catch (err) { toast.error((err as Error).message); }
   };
 
   return (
