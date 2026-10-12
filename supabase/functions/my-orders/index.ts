@@ -12,6 +12,7 @@ Deno.serve(async (req) => {
     const sb = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_ANON_KEY")!);
     const { data: { user } } = await sb.auth.getUser(token);
     if (!user?.email) return json({ error: "Sign in required" }, 401);
+    if (!user.email_confirmed_at) return json({ error: "Please confirm your email to see your orders" }, 403);
     const { environment } = await req.json().catch(() => ({}));
     const env: StripeEnv = environment === "live" ? "live" : "sandbox";
     const stripe = createStripeClient(env);

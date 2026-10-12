@@ -22,6 +22,13 @@
       "when": 1791818265718,
       "tag": "0002_create_inquiries",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1791820051014,
+      "tag": "0003_migration",
+      "breakpoints": true
     }
   ]
 }

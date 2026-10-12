@@ -11,7 +11,17 @@ Deno.serve(async (req) => {
     const { priceId, returnUrl, environment, customerEmail } = await req.json();
     if (typeof priceId !== "string" || !/^[a-zA-Z0-9_-]+$/.test(priceId)) return json({ error: "Invalid priceId" }, 400);
     if (environment !== "sandbox" && environment !== "live") return json({ error: "Invalid environment" }, 400);
-    if (typeof returnUrl !== "string" || !/^https?:\/\//.test(returnUrl)) return json({ error: "Invalid returnUrl" }, 400);
+    if (typeof returnUrl !== "string") return json({ error: "Invalid returnUrl" }, 400);
+    let parsedReturn: URL;
+    try { parsedReturn = new URL(returnUrl.replace("{CHECKOUT_SESSION_ID}", "x")); } catch { return json({ error: "Invalid returnUrl" }, 400); }
+    const host = parsedReturn.hostname;
+    const allowedHost =
+      host === "luxemarket.app" || host === "www.luxemarket.app" ||
+      host === "gilded-haven-market.lovable.app" ||
+      (host.endsWith(".lovable.app") && host.includes("326988bf-bc2f-43a4-aac8-2c298218a341")) ||
+      host === "localhost";
+    if (!allowedHost || (parsedReturn.protocol !== "https:" && host !== "localhost") || parsedReturn.pathname !== "/checkout/return")
+      return json({ error: "Invalid returnUrl" }, 400);
     const env: StripeEnv = environment;
     const stripe = createStripeClient(env);
 
