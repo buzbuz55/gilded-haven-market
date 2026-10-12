@@ -5,7 +5,7 @@ type Lang = { code: string; name: string; title: string; desc: string; rtl?: boo
 
 // Site title + description in the 25 most widely spoken languages.
 export const LANGUAGES: Lang[] = [
-  { code: "en", name: "English", title: "LUXE — Luxury Jewelry, Art & Watches Consignment", desc: "Bring us your jewelry, art and watches. We examine, price and sell them — you keep 90%." },
+  { code: "en", name: "English", title: "LUXE — Buy & Consign Luxury Jewelry, Fine Art & Watches", desc: "Buy authenticated fine art, paintings and luxury jewelry, or consign your own pieces — LUXE examines, prices and sells them for you, and you keep 90%." },
   { code: "zh-CN", name: "中文", title: "LUXE — 奢华珠宝、艺术品与腕表寄售", desc: "将您的珠宝、艺术品和腕表交给我们。我们鉴定、定价并出售——您保留90%。" },
   { code: "hi", name: "हिन्दी", title: "LUXE — लक्ज़री आभूषण, कला और घड़ियों की कंसाइनमेंट", desc: "अपने आभूषण, कला और घड़ियाँ हमारे पास लाएँ। हम जाँच, मूल्य निर्धारण और बिक्री करते हैं — आपको 90% मिलता है।" },
   { code: "es", name: "Español", title: "LUXE — Consignación de joyas, arte y relojes de lujo", desc: "Tráenos tus joyas, arte y relojes. Los examinamos, valoramos y vendemos: tú te quedas con el 90%." },
