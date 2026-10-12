@@ -6,7 +6,7 @@ const recentlyViewedProducts = [
     id: "5",
     title: "Rolex Submariner Steel",
     price: "$13,500",
-    image: "/placeholder.svg",
+    image: "/lovable-uploads/47af9bc4-5eea-4731-9e23-75531c9e81e4.png",
     brand: "Rolex",
     category: "watches"
   },
@@ -14,7 +14,7 @@ const recentlyViewedProducts = [
     id: "6",
     title: "Vintage Bvlgari Serpenti Bracelet",
     price: "$7,200",
-    image: "/placeholder.svg",
+    image: "/lovable-uploads/0433921a-bb41-436c-b04b-cffb33c3e8d8.png",
     brand: "Bvlgari",
     category: "jewelry"
   },
@@ -22,7 +22,7 @@ const recentlyViewedProducts = [
     id: "7",
     title: "Cartier Love Bracelet Gold",
     price: "$8,100",
-    image: "/placeholder.svg",
+    image: "/lovable-uploads/2719d621-567b-4987-9d14-6b6f6a4d5f9d.png",
     brand: "Cartier",
     category: "jewelry"
   }

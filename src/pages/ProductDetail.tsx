@@ -1,6 +1,6 @@
 import { isSaved, toggleSaved } from "@/lib/saved";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Heart, Share2, ArrowLeft, ChevronRight, Star, Info, Shield, Truck, RotateCcw, Crown, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -84,6 +84,33 @@ const ProductDetail = () => {
       }
     : sampleProducts.find(p => p.id === id) || sampleProducts[0];
   const images = [product.image, product.image, product.image]; // Multiple angles
+
+  useEffect(() => {
+    const url = `https://luxemarket.app/product/${product.id}`;
+    const desc = String(product.description ?? "").replace(/\s+/g, " ").slice(0, 155);
+    document.title = `${product.title} — ${product.brand} | LUXE`;
+    const setMeta = (attr: string, key: string, val: string) => {
+      let el = document.head.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
+      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, key); document.head.appendChild(el); }
+      el.content = val;
+    };
+    setMeta("name", "description", desc);
+    setMeta("property", "og:title", product.title);
+    setMeta("property", "og:description", desc);
+    setMeta("property", "og:type", "product");
+    setMeta("property", "og:url", url);
+    const ld = document.createElement("script");
+    ld.type = "application/ld+json";
+    ld.text = JSON.stringify({
+      "@context": "https://schema.org", "@type": "Product",
+      name: product.title, image: new URL(product.image, window.location.origin).href,
+      description: desc, brand: { "@type": "Brand", name: product.brand },
+      offers: { "@type": "Offer", price: product.price, priceCurrency: painting ? "USD" : "EUR",
+        availability: "https://schema.org/InStock", url },
+    });
+    document.head.appendChild(ld);
+    return () => { ld.remove(); };
+  }, [product.id]);
 
   const handleBack = () => {
     navigate(-1);

@@ -131,24 +131,18 @@ const productsByCategory = {
   "ICONIC DESIGNS": convertToProductFormat([...hauteJoaillerieProducts, ...horlogerieProducts].filter(p => p.isNew))
 };
 
-// Sample recently viewed products
-const recentlyViewedProducts = [
-  {
-    id: "1",
-    image: "/placeholder.svg",
-    title: "Vintage Gold Watch"
-  },
-  {
-    id: "2", 
-    image: "/placeholder.svg",
-    title: "Designer Bracelet"
-  },
-  {
-    id: "3",
-    image: "/placeholder.svg", 
-    title: "Classic Timepiece"
-  }
-];
+// Real product photos replace placeholder images
+const withRealImages = (cat: string, subs: { name: string; image: string }[]) => {
+  const pool = (productsByCategory as Record<string, { image: string }[]>)[cat] ?? [];
+  return subs.map((s, i) => ({
+    ...s,
+    image: s.image === "/placeholder.svg" && pool.length ? pool[i % pool.length].image : s.image,
+  }));
+};
+
+const recentlyViewedProducts = [...horlogerieProducts, ...hauteJoaillerieProducts]
+  .slice(0, 3)
+  .map((p) => ({ id: p.id, image: p.image, title: p.title }));
 
 const Categories = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -202,7 +196,7 @@ const Categories = () => {
       <>
         <SubCategory
           categoryName={selectedCategory}
-          subcategories={subcategoriesData[selectedCategory as keyof typeof subcategoriesData]}
+          subcategories={withRealImages(selectedCategory, subcategoriesData[selectedCategory as keyof typeof subcategoriesData])}
           onBack={handleBackToCategories}
           onSubCategoryClick={handleSubCategoryClick}
         />
